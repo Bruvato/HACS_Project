@@ -37,12 +37,39 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""Look"",
+                    ""type"": ""Value"",
+                    ""id"": ""ee8fc7c6-1e73-42ee-b15a-45759a8fd3ef"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""13fa99b8-b1ca-4940-a2f1-4586b46cbb0a"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Crouch"",
+                    ""type"": ""Button"",
+                    ""id"": ""271ce2db-2b0c-434b-b6c8-cab7a8622766"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""538ee2db-a23d-46ea-b05f-cd935302875b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": false
                 }
             ],
@@ -178,6 +205,72 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""28beaad7-d26a-412e-9213-093bae633153"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""11228c83-0831-4ad2-a61a-193ecf4b9170"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cc4cfca4-2f11-4e2a-8f4f-3247516ae627"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""abf61f63-b63a-49ce-b9db-b0b7e3d2a2b4"",
+                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""600ef8e9-e8e8-495b-a259-122620296120"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b72cf907-dc84-4128-8281-f4341db3b044"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -187,7 +280,10 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         // OnFoot
         m_OnFoot = asset.FindActionMap("OnFoot", throwIfNotFound: true);
         m_OnFoot_Movement = m_OnFoot.FindAction("Movement", throwIfNotFound: true);
+        m_OnFoot_Look = m_OnFoot.FindAction("Look", throwIfNotFound: true);
         m_OnFoot_Jump = m_OnFoot.FindAction("Jump", throwIfNotFound: true);
+        m_OnFoot_Crouch = m_OnFoot.FindAction("Crouch", throwIfNotFound: true);
+        m_OnFoot_Sprint = m_OnFoot.FindAction("Sprint", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -248,13 +344,19 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_OnFoot;
     private IOnFootActions m_OnFootActionsCallbackInterface;
     private readonly InputAction m_OnFoot_Movement;
+    private readonly InputAction m_OnFoot_Look;
     private readonly InputAction m_OnFoot_Jump;
+    private readonly InputAction m_OnFoot_Crouch;
+    private readonly InputAction m_OnFoot_Sprint;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
         public OnFootActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_OnFoot_Movement;
+        public InputAction @Look => m_Wrapper.m_OnFoot_Look;
         public InputAction @Jump => m_Wrapper.m_OnFoot_Jump;
+        public InputAction @Crouch => m_Wrapper.m_OnFoot_Crouch;
+        public InputAction @Sprint => m_Wrapper.m_OnFoot_Sprint;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -267,9 +369,18 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Movement.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnMovement;
+                @Look.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnLook;
+                @Look.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnLook;
+                @Look.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnLook;
                 @Jump.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnJump;
+                @Crouch.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnCrouch;
+                @Crouch.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnCrouch;
+                @Crouch.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnCrouch;
+                @Sprint.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnSprint;
+                @Sprint.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnSprint;
+                @Sprint.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnSprint;
             }
             m_Wrapper.m_OnFootActionsCallbackInterface = instance;
             if (instance != null)
@@ -277,9 +388,18 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
+                @Look.started += instance.OnLook;
+                @Look.performed += instance.OnLook;
+                @Look.canceled += instance.OnLook;
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Crouch.started += instance.OnCrouch;
+                @Crouch.performed += instance.OnCrouch;
+                @Crouch.canceled += instance.OnCrouch;
+                @Sprint.started += instance.OnSprint;
+                @Sprint.performed += instance.OnSprint;
+                @Sprint.canceled += instance.OnSprint;
             }
         }
     }
@@ -287,6 +407,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     public interface IOnFootActions
     {
         void OnMovement(InputAction.CallbackContext context);
+        void OnLook(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnCrouch(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
     }
 }

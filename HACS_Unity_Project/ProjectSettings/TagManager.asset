@@ -6,6 +6,8 @@ TagManager:
   tags:
   - New tag
   - New tag (1)
+  - target
+  - EnemyPool
   layers:
   - Default
   - TransparentFX

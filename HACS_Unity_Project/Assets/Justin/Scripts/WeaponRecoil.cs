@@ -12,9 +12,12 @@ public class WeaponRecoil : MonoBehaviour
     public float kickZ;
     public float snappiness;
     public float returnAmount;
-    public float aimSpeed;
+    public float aimSpeedMultiplier;
+    public float aimSpeed = 0.5f;
 
     public Transform cam;
+    public float fov, aimfov;
+    public GameObject view;
     public Transform aimLocation;
 
     // Start is called before the first frame update
@@ -38,6 +41,8 @@ public class WeaponRecoil : MonoBehaviour
             aimLocation.localPosition.y,
             aimLocation.localPosition.z);
         currentReset = currentAim;
+        view.GetComponent<Camera>().fieldOfView = fov;
+
     }
 
     
@@ -46,9 +51,15 @@ public class WeaponRecoil : MonoBehaviour
     {   
         if(Input.GetButton("Fire2")){
 
-            aimTarget = Vector3.Lerp(aimTarget, initialPosition, aimSpeed * Time.deltaTime);
-            currentAim = Vector3.Lerp(currentAim, aimTarget, aimSpeed * Time.deltaTime);
-            initialPosition = currentAim;
+            for (int i = 0; i < aimSpeedMultiplier; i++)
+            {
+                aimTarget = Vector3.Lerp(aimTarget, initialPosition, aimSpeed * Time.deltaTime);
+                currentAim = Vector3.Lerp(currentAim, aimTarget, aimSpeed * Time.deltaTime);
+                initialPosition = currentAim;
+
+            }
+            view.GetComponent<Camera>().fieldOfView = aimfov;
+
             
         }else{
             aimTarget2 = Vector3.Lerp(aimTarget2, initialPosition2, aimSpeed * Time.deltaTime);
@@ -58,6 +69,7 @@ public class WeaponRecoil : MonoBehaviour
             // reset aiming variables
             aimTarget = originalAim;
             currentAim = currentReset;
+            view.GetComponent<Camera>().fieldOfView = fov;
 
         }
         targetRotation = Vector3.Lerp(targetRotation, Vector3.zero, returnAmount * Time.deltaTime);

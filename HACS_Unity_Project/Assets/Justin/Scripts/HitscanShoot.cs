@@ -59,10 +59,10 @@ public class HitscanShoot : MonoBehaviour
             {
                 timeBeforeShoot = firerate;
                 noise.PlayOneShot(noise.clip);
-                
                 if (Physics.Raycast(bulletPath, out hit, range, targets))
                 {
                     hitObject = hit.collider.gameObject;
+                    Debug.DrawRay(bulletPath.origin, bulletPath.direction, Color.red, 0.05f);
                     var particle = pool.Get();
                     particle.transform.position = hit.point;
                     particle.transform.forward = hit.normal;
@@ -83,4 +83,5 @@ public class HitscanShoot : MonoBehaviour
         yield return new WaitForSeconds(5);
         pool.Release(ptcle);
     }
+
 }

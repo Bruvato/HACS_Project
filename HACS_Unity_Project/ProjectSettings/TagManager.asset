@@ -15,11 +15,11 @@ TagManager:
   - 
   - Water
   - UI
-  - Ground
+  - Walls
   - Enemies
-  - Self
-  - 
-  - 
+  - Player
+  - LineOfSIght
+  - Floor
   - 
   - 
   - 

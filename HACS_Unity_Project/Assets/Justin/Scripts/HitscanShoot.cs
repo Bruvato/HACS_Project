@@ -70,9 +70,11 @@ public class HitscanShoot : MonoBehaviour
                     StartCoroutine(killParticle(particle));
                     if(Physics.Raycast(bulletPath, out hit, range, enemies))
                     {
+                        // if(hitObject.GetComponent<Enemy>() != null){
                         stats = hitObject.GetComponent<Enemy>();
 
                         stats.hp -= 10;
+                        // }
                     }
                 }
                 recoil.recoil();

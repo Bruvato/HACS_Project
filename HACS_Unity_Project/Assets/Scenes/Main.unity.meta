@@ -1,5 +1,10 @@
 fileFormatVersion: 2
-guid: 57761baf3087249759acec06ee25e755
+<<<<<<<< Updated upstream:HACS_Unity_Project/Assets/Scenes/Main.unity.meta
+guid: c1617d35e9ad64746a6ac8ebcea7c817
+========
+guid: 757d8499b9303448bb93d1e7a787cb5d
+folderAsset: yes
+>>>>>>>> Stashed changes:HACS_Unity_Project/Assets/Imported Assets.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

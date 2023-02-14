@@ -1,6 +1,11 @@
 fileFormatVersion: 2
-guid: 8227fbb003e5e4d59bdc15795d59aa08
+<<<<<<<< Updated upstream:HACS_Unity_Project/Assets/Scenes/Testing1.unity.meta
+guid: a2d6c0d136f834f86ad3599452cf4c69
 DefaultImporter:
+========
+guid: f6d148d888ffbf54b9afe9936dfaec1f
+PrefabImporter:
+>>>>>>>> Stashed changes:HACS_Unity_Project/Assets/Imported Assets/StarterAssets/ThirdPersonController/Prefabs/MainCamera.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

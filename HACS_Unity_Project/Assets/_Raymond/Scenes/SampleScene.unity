@@ -30340,7 +30340,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1514192515}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c796208d60eb9492081f3dfb158b3dc7, type: 3}
+  m_Script: {fileID: 11500000, guid: 320cbd3f3034f4ea6af40ebe2b6316cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   wallRun: {fileID: 980955547}
@@ -30349,10 +30349,6 @@ MonoBehaviour:
   orientation: {fileID: 76900686}
   mouseSensitivity: 1
   sensMultiplier: 10
-  mouseX: 0
-  mouseY: 0
-  xRot: 0
-  yRot: 0
 --- !u!43 &1520232562
 Mesh:
   m_ObjectHideFlags: 0

@@ -44,10 +44,8 @@ public class EnemyPool : MonoBehaviour
         
     }
 
-    public IEnumerator killEnemy(GameObject enemy)
+    public void killEnemy(GameObject enemy)
     {
-        Debug.Log("Kill");
-        yield return new WaitForSeconds(2);
         Debug.Log("cleaned");
         enemies.Release(enemy);
     }

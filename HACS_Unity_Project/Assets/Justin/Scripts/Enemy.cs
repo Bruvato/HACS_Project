@@ -28,9 +28,11 @@ public class Enemy : MonoBehaviour
         }
     }
     IEnumerator kill(){
+        Debug.Log("kill");
+
         yield return new WaitForSeconds(5);
-        Destroy(gameObject);
-        // pool.killEnemy(gameObject);
+        // Destroy(gameObject);
+        pool.killEnemy(gameObject);
     }
     void RagdollOn(){
         rb.isKinematic = false;

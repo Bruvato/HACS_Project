@@ -7,8 +7,12 @@ public class PlayerLook : MonoBehaviour
     [Header("Refrences")]
     [SerializeField] private WallRun wallRun;
     [SerializeField] private Transform playerHead;
-    [SerializeField] private Transform cam;
+    [SerializeField] private Camera cam;
     [SerializeField] private Transform orientation;
+
+    float targetFov;
+    [SerializeField] private float fovLerpTime;
+
 
     [Header("Look")]
     [SerializeField] private float mouseSensitivity;
@@ -49,7 +53,7 @@ public class PlayerLook : MonoBehaviour
 
     private void Look()
     {
-        cam.rotation = Quaternion.Euler(xRot, yRot, wallRun.tilt);
+        cam.transform.rotation = Quaternion.Euler(xRot, yRot, wallRun.tilt);
         orientation.rotation = Quaternion.Euler(0, yRot, 0);
     }
 
@@ -57,5 +61,10 @@ public class PlayerLook : MonoBehaviour
     private void MoveCam()
     {
         transform.position = playerHead.position;
+    }
+
+    private void ChangeFov()
+    {
+        cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, targetFov, fovLerpTime);
     }
 }

@@ -59,6 +59,8 @@ public class HitscanShoot : MonoBehaviour
             {
                 timeBeforeShoot = firerate;
                 noise.PlayOneShot(noise.clip);
+                recoil.recoil();
+
                 if (Physics.Raycast(bulletPath, out hit, range, targets))
                 {
                     hitObject = hit.collider.gameObject;
@@ -77,7 +79,6 @@ public class HitscanShoot : MonoBehaviour
                         // }
                     }
                 }
-                recoil.recoil();
             }
         }
     }

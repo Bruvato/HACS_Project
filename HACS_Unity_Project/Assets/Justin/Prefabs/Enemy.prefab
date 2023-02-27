@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2524904797318772089}
   - component: {fileID: 851804481041454919}
   - component: {fileID: -8299636875773732284}
+  - component: {fileID: 1458973748}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 2524904797318772095}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.9546, y: 1.9546, z: 1.9546}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7695708363259608333}
@@ -158,6 +159,19 @@ MonoBehaviour:
   LOSChecker: {fileID: 4851605955106389980}
   hideSensitivity: 0
   navMeshAgent: {fileID: 2524904797318772089}
+--- !u!114 &1458973748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2524904797318772095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c9df565d5571419d9c899a665074cb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
 --- !u!1 &3823404451381086039
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +183,7 @@ GameObject:
   - component: {fileID: 7695708363259608333}
   - component: {fileID: 79334326237784672}
   - component: {fileID: 4851605955106389980}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +199,7 @@ Transform:
   m_GameObject: {fileID: 3823404451381086039}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.51161367, y: 0.51161367, z: 0.51161367}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2524904797318772092}
@@ -202,7 +216,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 15
+  m_Radius: 12
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4851605955106389980
 MonoBehaviour:
@@ -217,7 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   c: {fileID: 79334326237784672}
-  fieldOfView: 180
+  fieldOfView: 360
   LineOfSightLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 8

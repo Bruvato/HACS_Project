@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyNavMesh : MonoBehaviour
+public class EnemyHide : MonoBehaviour
 {
     public Transform player;
     public LayerMask hidableLayers;

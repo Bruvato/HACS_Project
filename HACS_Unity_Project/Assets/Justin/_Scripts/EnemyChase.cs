@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class Armor : MonoBehaviour
+public class EnemyChase : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -14,5 +15,9 @@ public class Armor : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void Chase(Transform transform){
+
     }
 }

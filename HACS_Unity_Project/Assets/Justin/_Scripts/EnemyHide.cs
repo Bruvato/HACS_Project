@@ -54,7 +54,7 @@ public class EnemyHide : MonoBehaviour
         {
             Debug.Log("while");
 
-            WaitForSeconds Wait = new WaitForSeconds(1f);
+            WaitForSeconds wait = new WaitForSeconds(1f);
 
 
             int hits = Physics.OverlapSphereNonAlloc(navMeshAgent.transform.position, LOSChecker.c.radius, colliders, hidableLayers);
@@ -96,7 +96,7 @@ public class EnemyHide : MonoBehaviour
                 }
                 // break;
             }
-            yield return Wait;
+            yield return wait;
 
         }
         // private void Update()

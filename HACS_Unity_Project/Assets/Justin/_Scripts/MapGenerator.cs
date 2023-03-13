@@ -26,16 +26,13 @@ public class MapGenerator : MonoBehaviour
             }
         }
         numBuildings = mLength;
-        for (int i = 0; i < mLength; i++)
-        {
-            for (int j = 0; j < mLength; j++)
-            {
-                GenerateTiles(i, j);
-            }
-        }
+        
+        GenerateTiles(0, 0);
+            
         
         Debug.Log(buildingLayout);
         // Update is called once per frame
+        buildObjects();
 
     }
     void GenerateTiles(int r, int c)
@@ -108,7 +105,8 @@ public class MapGenerator : MonoBehaviour
                             buildingLayout[r + i, c + j] = true;
                             generatedBuildings++;
                             lastGeneratedr = r + i;
-                            lastGeneratedc = c + i;
+                            lastGeneratedc = c + j;
+
                         }
                     }
                     else if (possiblePositions[scroller] == -1)
@@ -119,6 +117,7 @@ public class MapGenerator : MonoBehaviour
 
                 }
             }
+            GenerateTiles(lastGeneratedr, lastGeneratedc);
 
         }
     }
@@ -132,6 +131,21 @@ public class MapGenerator : MonoBehaviour
         return row < arr.GetLength(0) && row > -1 && col < arr.GetLength(1) && col > -1;
 
     }
+    public void buildObjects(){
+        for (int r = 0; r < buildingLayout.GetLength(0); r++)
+        {
+            for (int c = 0; c < buildingLayout.GetLength(1); c++)
+            {
+                if(buildingLayout[r, c]==true){
+                    Instantiate(stuff, new Vector3(r*10, 0, c*10), Quaternion.identity);
+                }else{
+                    Instantiate(stuff2, new Vector3(r*10, 0, c*10), Quaternion.identity);
+                }
+
+            }
+        }
+    }
 }
+
 
 

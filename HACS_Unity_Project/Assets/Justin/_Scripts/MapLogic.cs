@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class MapLogic : MonoBehaviour
 {
-    public GameObject a;
+    public MapGenerator mG;
+    public int mapLength;
     void Awake(){
+        mG.Setup(mapLength);
 
     }
     

@@ -10,13 +10,15 @@ public class MapGenerator : MonoBehaviour
     private int numBuildings;
     private int[] buildingID;
     private bool[,] buildingLayout;
-    public int mLength;
+    private int mLength;
     private int generatedBuildings = 0;
     private int lastGeneratedr, lastGeneratedc;
 
     // Start is called before the first frame update
-    void Awake()
+    public void Setup(int len)
     {
+        mLength = len;
+
         buildingLayout = new bool[mLength, mLength];
         for (int i = 0; i < buildingLayout.GetLength(0); i++)
         {
@@ -26,38 +28,28 @@ public class MapGenerator : MonoBehaviour
             }
         }
         numBuildings = mLength;
-        
+
         GenerateTiles(0, 0);
-            
-        
+
+
         Debug.Log(buildingLayout);
         // Update is called once per frame
         buildObjects();
 
     }
+
+
+
     void GenerateTiles(int r, int c)
     {
         if (generatedBuildings < numBuildings)
         {
+            
             int[] possiblePositions = new int[9];
             for (int i = 0; i < possiblePositions.Length; i++)
             {
                 possiblePositions[i] = i;
             }
-            // if (r - 1 == -1)
-            // {
-            //     possiblePositions[0] = -1;
-            //     possiblePositions[1] = -1;
-            //     possiblePositions[2] = -1;
-            // }
-
-            // if (c - 1 == -1)
-            // {
-            //     possiblePositions[0] = -1;
-            //     possiblePositions[3] = -1;
-            //     possiblePositions[6] = -1;
-            // }
-
 
 
             int count = 0;
@@ -74,13 +66,15 @@ public class MapGenerator : MonoBehaviour
                             {
 
                                 possiblePositions[count] = -1;
+
                             }
                         }
                     }
+
                     count++;
+
                 }
             }
-
 
 
             int maxPossible = 0;
@@ -88,12 +82,17 @@ public class MapGenerator : MonoBehaviour
             {
                 if (n != -1)
                 {
+
                     maxPossible++;
+
                 }
             }
 
+
             int generated = Random.Range(0, maxPossible);
             int scroller = 0;
+            
+            
             for (int i = -1; i < 2; i++)
             {
                 for (int j = -1; j < 2; j++)
@@ -102,6 +101,7 @@ public class MapGenerator : MonoBehaviour
                     {
                         if (isIn2dBoolArray(r + i, c + j, buildingLayout))
                         {
+
                             buildingLayout[r + i, c + j] = true;
                             generatedBuildings++;
                             lastGeneratedr = r + i;
@@ -109,41 +109,71 @@ public class MapGenerator : MonoBehaviour
 
                         }
                     }
+
                     else if (possiblePositions[scroller] == -1)
                     {
+
                         generated++;
+
                     }
+
                     scroller++;
 
                 }
             }
+
             GenerateTiles(lastGeneratedr, lastGeneratedc);
 
         }
     }
+
+
+
     private bool isIn2dBoolArray(int row, int col, bool[,] arr)
     {
+
         return row < arr.GetLength(0) && row > -1 && col < arr.GetLength(1) && col > -1;
 
     }
+
+
+
     private bool isIn2dIntArray(int row, int col, int[,] arr)
     {
+
         return row < arr.GetLength(0) && row > -1 && col < arr.GetLength(1) && col > -1;
 
     }
-    public void buildObjects(){
+
+
+
+    public void buildObjects()
+    {
+
         for (int r = 0; r < buildingLayout.GetLength(0); r++)
         {
+
             for (int c = 0; c < buildingLayout.GetLength(1); c++)
             {
-                if(buildingLayout[r, c]==true){
-                    Instantiate(stuff, new Vector3(r*10, 0, c*10), Quaternion.identity);
-                }else{
-                    Instantiate(stuff2, new Vector3(r*10, 0, c*10), Quaternion.identity);
+
+                if (buildingLayout[r, c] == true)
+                {
+
+                    Instantiate(stuff, new Vector3(r * 10, 0, c * 10), Quaternion.identity);
+
+                }
+
+                else
+                {
+
+                    Instantiate(stuff2, new Vector3(r * 10, 0, c * 10), Quaternion.identity);
+
                 }
 
             }
+
         }
+
     }
 }
 

@@ -143,7 +143,9 @@ public class MapGenerator : MonoBehaviour
 
     }
 
-
+    public bool[,] getBuildingLayout(){
+        return buildingLayout;
+    }
 
     
 }

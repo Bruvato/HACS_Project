@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
-    public GameObject stuff, stuff2;
     private int numBuildings;
     private int[] buildingID;
     private bool[,] buildingLayout;
@@ -34,7 +33,6 @@ public class MapGenerator : MonoBehaviour
 
         Debug.Log(buildingLayout);
         // Update is called once per frame
-        buildObjects();
 
     }
 
@@ -147,34 +145,7 @@ public class MapGenerator : MonoBehaviour
 
 
 
-    public void buildObjects()
-    {
-
-        for (int r = 0; r < buildingLayout.GetLength(0); r++)
-        {
-
-            for (int c = 0; c < buildingLayout.GetLength(1); c++)
-            {
-
-                if (buildingLayout[r, c] == true)
-                {
-
-                    Instantiate(stuff, new Vector3(r * 10, 0, c * 10), Quaternion.identity);
-
-                }
-
-                else
-                {
-
-                    Instantiate(stuff2, new Vector3(r * 10, 0, c * 10), Quaternion.identity);
-
-                }
-
-            }
-
-        }
-
-    }
+    
 }
 
 

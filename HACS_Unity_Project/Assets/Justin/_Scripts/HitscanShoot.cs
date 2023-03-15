@@ -21,7 +21,6 @@ public class HitscanShoot : MonoBehaviour
     private GameObject hitObject;
     private ObjectPool<ParticleSystem> pool;
     private ParticleSystem particle;
-    private Enemy stats;
 
     // Start is called before the first frame update
     void Start()
@@ -72,11 +71,16 @@ public class HitscanShoot : MonoBehaviour
                     StartCoroutine(killParticle(particle));
                     if(Physics.Raycast(bulletPath, out hit, range, enemies))
                     {
-                        // if(hitObject.GetComponent<Enemy>() != null){
-                        stats = hitObject.GetComponent<Enemy>();
+                        if(hitObject.GetComponent<Enemy>() != null){
+                        Enemy stats = hitObject.GetComponent<Enemy>();
 
-                        stats.hp -= 10;
-                        // }
+                        stats.currenthp -= 10;
+                        }
+                        if(hitObject.GetComponent<Armor>() != null){
+                        Armor astats = hitObject.GetComponent<Armor>();
+
+                        astats.currenthp -= 10;
+                        }
                     }
                 }
             }

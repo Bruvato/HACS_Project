@@ -15,6 +15,9 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField] private TextMeshProUGUI currentStamText;
     [SerializeField] private TextMeshProUGUI maxStamText;
 
+    [SerializeField] private TextMeshProUGUI ammoText;
+    [SerializeField] private GunData gunData;
+
 
 
     public void UpdateHealthUI(int currentHealth, int maxHealth)
@@ -30,5 +33,10 @@ public class PlayerHUD : MonoBehaviour
         currentStamText.text = "" + currentEnd;
 
         stamBar.UpdateEndBar(currentEnd, maxEnd);
+    }
+    
+    private  void Update()
+    {
+        ammoText.text = gunData.currentAmmo + " / " + gunData.magSize;
     }
 }

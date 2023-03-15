@@ -41,6 +41,7 @@ public class CheckLOS : MonoBehaviour
     {
         Vector3 direction = (target.transform.position - this.transform.position).normalized;
         
+        // Debug.DrawLine(this.transform.position, this.transform.position+10*direction, Color.white, 100000000f, false);
         // Debug.DrawRay(this.transform.position, direction, Color.white, 10000000f, false);
 
         float dotProduct = Vector3.Dot(this.transform.forward, direction);
@@ -63,8 +64,6 @@ public class CheckLOS : MonoBehaviour
         
         while(!CheckLineOfSight(target))
         {
-            Debug.DrawLine(this.transform.position, target.transform.position, Color.white, 100f, false);
-
             yield return wait;
 
             // yield return wait;

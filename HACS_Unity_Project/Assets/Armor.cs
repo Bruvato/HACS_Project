@@ -2,11 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyNavAgent : MonoBehaviour
+public class Armor : MonoBehaviour
 {
-    private CheckLOS los;
-    private EnemyChase chase;
-    private EnemyHide hide;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,5 +13,6 @@ public class EnemyNavAgent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
     }
 }

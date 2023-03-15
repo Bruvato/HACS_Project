@@ -11,7 +11,7 @@ public class MapGenerator : MonoBehaviour
     private bool[,] buildingLayout;
     private int mLength;
     private int generatedBuildings = 0;
-    private int lastGeneratedr, lastGeneratedc;
+    private int lastGeneratedr=0, lastGeneratedc=0;
 
     // Start is called before the first frame update
     public void Setup(int len)
@@ -28,7 +28,14 @@ public class MapGenerator : MonoBehaviour
         }
         numBuildings = mLength;
 
-        GenerateTiles(0, 0);
+        buildingLayout[0,0]=true;
+        generatedBuildings++;
+        
+        // for (int i = 0; i < mLength; i++)
+        // {
+            // Debug.Log(i +", " + lastGeneratedr +", " + lastGeneratedc);
+            GenerateTiles(lastGeneratedr, lastGeneratedc);
+        // }
 
 
         Debug.Log(buildingLayout);

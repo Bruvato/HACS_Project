@@ -26,7 +26,7 @@ public class MapLogic : MonoBehaviour
                 if (layout[r, c] == true)
                 {
                     
-                    Instantiate(buildings[Random.Range(0,buildings.Count)], new Vector3(r * seperation, -13.7879f, c * seperation), Quaternion.identity);
+                    Instantiate(buildings[Random.Range(0,buildings.Count)], new Vector3(r * seperation, -50, c * seperation), Quaternion.identity);
                     
                 }
 

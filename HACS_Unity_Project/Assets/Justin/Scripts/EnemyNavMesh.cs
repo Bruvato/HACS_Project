@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyHide : MonoBehaviour
+public class EnemyNavMesh : MonoBehaviour
 {
     public Transform player;
     public LayerMask hidableLayers;
@@ -54,7 +54,7 @@ public class EnemyHide : MonoBehaviour
         {
             Debug.Log("while");
 
-            WaitForSeconds wait = new WaitForSeconds(1f);
+            WaitForSeconds Wait = new WaitForSeconds(1f);
 
 
             int hits = Physics.OverlapSphereNonAlloc(navMeshAgent.transform.position, LOSChecker.c.radius, colliders, hidableLayers);
@@ -96,7 +96,7 @@ public class EnemyHide : MonoBehaviour
                 }
                 // break;
             }
-            yield return wait;
+            yield return Wait;
 
         }
         // private void Update()

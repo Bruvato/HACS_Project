@@ -6,6 +6,10 @@ using TMPro;
 
 public class PlayerHUD : MonoBehaviour
 {
+    [Header("Refrences")]
+    [SerializeField] private WeaponSwitching weaponSwitching;
+
+    [Header("Player stats")]
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private StamBar stamBar;
 
@@ -15,9 +19,11 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField] private TextMeshProUGUI currentStamText;
     [SerializeField] private TextMeshProUGUI maxStamText;
 
+    [Header("Weapon")]
+    [SerializeField] private GunData[] gunDataList;
     [SerializeField] private TextMeshProUGUI ammoText;
-    [SerializeField] private GunData gunData;
-
+    [SerializeField] private TextMeshProUGUI weaponName;
+    [SerializeField] private Image reloadCricle;
 
 
     public void UpdateHealthUI(int currentHealth, int maxHealth)
@@ -37,6 +43,17 @@ public class PlayerHUD : MonoBehaviour
     
     private  void Update()
     {
-        ammoText.text = gunData.currentAmmo + " / " + gunData.magSize;
+        int i = weaponSwitching.getSelectedWeapon();
+        weaponName.text = "" + gunDataList[i].name;
+        ammoText.text = gunDataList[i].currentAmmo + " / " + gunDataList[i].magSize;
+
+        if (gunDataList[i].reloading)
+        {
+            reloadCricle.fillAmount = Mathf.MoveTowards(reloadCricle.fillAmount, 1, Time.deltaTime / gunDataList[i].reloadTime);
+        }
+        else
+        {
+            reloadCricle.fillAmount = 0;
+        }
     }
 }

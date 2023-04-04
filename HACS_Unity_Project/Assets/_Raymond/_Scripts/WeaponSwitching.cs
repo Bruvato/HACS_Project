@@ -75,4 +75,9 @@ public class WeaponSwitching : MonoBehaviour
     {
         print("selected new weapon");
     }
+
+    public int getSelectedWeapon()
+    {
+        return selectedWeapon;
+    }
 }

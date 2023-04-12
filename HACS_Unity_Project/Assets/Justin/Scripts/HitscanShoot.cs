@@ -22,6 +22,7 @@ public class HitscanShoot : MonoBehaviour
     private ObjectPool<ParticleSystem> pool;
     private ParticleSystem particle;
     private Enemy stats;
+    private Armor astats;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +42,7 @@ public class HitscanShoot : MonoBehaviour
         {
             Destroy(particle.gameObject);
         }, false, 10, 20);
-        
+
     }
 
     // Update is called once per frame
@@ -68,21 +69,30 @@ public class HitscanShoot : MonoBehaviour
                     var particle = pool.Get();
                     particle.transform.position = hit.point;
                     particle.transform.forward = hit.normal;
-                    
-                    StartCoroutine(killParticle(particle));
-                    if(Physics.Raycast(bulletPath, out hit, range, enemies))
-                    {
-                        // if(hitObject.GetComponent<Enemy>() != null){
-                        stats = hitObject.GetComponent<Enemy>();
 
-                        stats.hp -= 10;
-                        // }
+                    StartCoroutine(killParticle(particle));
+                    if (Physics.Raycast(bulletPath, out hit, range, enemies))
+                    {
+                        if (hitObject.GetComponent<Enemy>() != null)
+                        {
+                            stats = hitObject.GetComponent<Enemy>();
+                            stats.hp -= 10;
+                            
+                        }
+                        else
+                        {
+                            astats = hitObject.GetComponent<Armor>();
+                            astats.hp-=10;
+                        }
+
+                        
                     }
                 }
             }
         }
     }
-    IEnumerator killParticle(ParticleSystem ptcle){
+    IEnumerator killParticle(ParticleSystem ptcle)
+    {
         yield return new WaitForSeconds(5);
         pool.Release(ptcle);
     }

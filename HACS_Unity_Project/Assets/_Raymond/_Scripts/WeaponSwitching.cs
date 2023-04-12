@@ -65,15 +65,15 @@ public class WeaponSwitching : MonoBehaviour
         {
             weapons[i].gameObject.SetActive(i == weaponIndex);
         }
-         
-         timeSinceLastSwitch = 0f;
 
-         OnWeaponSelected();
+        timeSinceLastSwitch = 0f;
+
+        OnWeaponSelected();
     }
 
     private void OnWeaponSelected()
     {
-        print("selected new weapon");
+        //print("selected new weapon");
     }
 
     public int getSelectedWeapon()

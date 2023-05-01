@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gun : MonoBehaviour
+public class ProjectileGun : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GunData gunData;
@@ -46,8 +46,6 @@ public class Gun : MonoBehaviour
             {
                 if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hitInfo, gunData.maxDistance))
                 {
-                    //Debug.Log(hitInfo.transform.name);
-
                     IDamageable damageable = hitInfo.transform.GetComponent<IDamageable>();
                     damageable?.TakeDamage(gunData.damage);
                 }
@@ -62,11 +60,17 @@ public class Gun : MonoBehaviour
     private void Update()
     {
         timeSinceLastShot += Time.deltaTime;
-        Debug.DrawRay(cam.transform.position, cam.transform.forward * gunData.maxDistance, Color.red);
+
+        AlignGun();
     }
 
     private void OnGunShot()
     {
 
+    }
+
+    private void AlignGun()
+    {
+        gameObject.transform.Rotate(1, 0, 0);
     }
 }

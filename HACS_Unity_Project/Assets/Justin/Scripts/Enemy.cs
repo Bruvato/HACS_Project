@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float hp = 100f;
+    public float hp = 100f, initHp;
     private Rigidbody rb;
     private EnemyPool pool;
     // Start is called before the first frame update
@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
         pool = GameObject.FindGameObjectWithTag("EnemyPool").GetComponent<EnemyPool>();
         rb.isKinematic = true;
+        initHp = hp;
     }
 
     // Update is called once per frame

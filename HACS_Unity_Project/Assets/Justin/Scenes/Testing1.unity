@@ -808,6 +808,10 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 2524904797318772090, guid: 09e210d5f81c349be846e5da2ab572ad, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 87da4855da63a49dba0a7e6de484d19c, type: 2}
     - target: {fileID: 2524904797318772092, guid: 09e210d5f81c349be846e5da2ab572ad, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -899,6 +903,8 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: -5427329572814630050, guid: 09e210d5f81c349be846e5da2ab572ad, type: 3}
     - {fileID: -6871554762732455057, guid: 09e210d5f81c349be846e5da2ab572ad, type: 3}
+    - {fileID: 1458973748, guid: 09e210d5f81c349be846e5da2ab572ad, type: 3}
+    - {fileID: -8299636875773732284, guid: 09e210d5f81c349be846e5da2ab572ad, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 09e210d5f81c349be846e5da2ab572ad, type: 3}
 --- !u!1 &257550683
 GameObject:
@@ -3207,6 +3213,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
+  initHp: 0
+--- !u!195 &1458973752 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 2524904797318772089, guid: 09e210d5f81c349be846e5da2ab572ad, type: 3}
+  m_PrefabInstance: {fileID: 225201710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1458973757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458973741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ed4eda6ed0f9426e9b495a1b8c60904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldHide: 0
+  shouldChase: 0
+  isAlert: 0
+  LOSChecker: {fileID: 0}
+  stats: {fileID: 1458973748}
+  hideThreshold: 0.5
+--- !u!114 &1458973758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458973741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 634c9ab33fae547ed85cf60fd4ec43d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logic: {fileID: 1458973757}
+  hide: 0
+  chase: 0
+  player: {fileID: 1647266630}
+  hidableLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  LOSChecker: {fileID: 339450973}
+  hideSensitivity: 0
+  minPlayerDistance: 5
+  navMeshAgent: {fileID: 1458973752}
 --- !u!1 &1472077532
 GameObject:
   m_ObjectHideFlags: 0
@@ -12980,6 +13033,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
+  initHp: 0
 --- !u!64 &8016497611013375416
 MeshCollider:
   m_ObjectHideFlags: 0

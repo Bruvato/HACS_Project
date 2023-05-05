@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemyNavMesh : MonoBehaviour
 {
     public navMeshLogic logic;
-    public bool hide;
+    public bool hide, chase;
     public Transform player;
     public LayerMask hidableLayers;
     public CheckLOS LOSChecker;
@@ -27,19 +27,28 @@ public class EnemyNavMesh : MonoBehaviour
         // GameObject target = GameObject.FindWithTag("target");
         // movePositionTransform = target.transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
+
         hide = logic.shouldHide;
+        chase = logic.shouldChase;
+
         LOSChecker.onGainSight += HandleGainSight;
         LOSChecker.onLoseSight += HandleLoseSight;
     }
 
     private void HandleGainSight(Transform target)
     {
+        getLogic();
         if (MovementCoroutine != null)
         {
             StopCoroutine(MovementCoroutine);
         }
         player = target;
+        if(chase == true){
+            MovementCoroutine = StartCoroutine(Chase(target));
+        }
+        if(hide == true){
         MovementCoroutine = StartCoroutine(Hide(target));
+        }
         Debug.Log("handlegain");
 
     }
@@ -57,10 +66,9 @@ public class EnemyNavMesh : MonoBehaviour
     private IEnumerator Hide(Transform target)
     {
         WaitForSeconds Wait = new WaitForSeconds(1f);
-        hide = logic.shouldHide;
-        while (hide = true)
+        getLogic();
+        while (hide == true)
         {
-            Debug.Log("while");
 
             for (int i = 0; i < colliders.Length; i++)
             {
@@ -68,9 +76,6 @@ public class EnemyNavMesh : MonoBehaviour
             }
 
             int hits = Physics.OverlapSphereNonAlloc(navMeshAgent.transform.position, LOSChecker.c.radius, colliders, hidableLayers);
-            Debug.Log("overlap sphere");
-            Debug.Log(hits);
-
             int hitReduction = 0;
             for (int i = 0; i < hits; i++)
             {
@@ -121,11 +126,26 @@ public class EnemyNavMesh : MonoBehaviour
             yield return Wait;
 
         }
+        
     }
-    // private void Update()
-    // {
-    //     // navMeshAgent.destination = movePositionTransform.position;
-    // }
+    private IEnumerator Chase(Transform target){
+        WaitForSeconds Wait = new WaitForSeconds(1f);
+        while (chase == true){
+            getLogic();
+
+            navMeshAgent.SetDestination(target.position);
+            yield return Wait;
+        }
+        HandleGainSight(target);
+        
+    }
+
+    private void getLogic(){
+        Debug.Log("logic");
+        chase = logic.shouldChase;
+        hide = logic.shouldHide;
+    }
+
     public int ColliderArraySortComparer(Collider A, Collider B)
     {
         if (A == null && B != null)

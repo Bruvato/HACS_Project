@@ -7,6 +7,8 @@ public class Gun : MonoBehaviour
     [Header("References")]
     [SerializeField] private GunData gunData;
     [SerializeField] private Camera cam;
+    [SerializeField] private WeaponRecoil recoil;
+
 
     private float timeSinceLastShot;
 
@@ -26,7 +28,7 @@ public class Gun : MonoBehaviour
         }
     }
 
-    private IEnumerator Reload()
+        private IEnumerator Reload()
     {
         gunData.reloading = true;
 
@@ -40,9 +42,12 @@ public class Gun : MonoBehaviour
 
     private void Shoot()
     {
+        Debug.Log("recoil");
+
         if (gunData.currentAmmo > 0)
         {
             if (CanShoot())
+
             {
                 if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hitInfo, gunData.maxDistance))
                 {
@@ -51,10 +56,12 @@ public class Gun : MonoBehaviour
                     IDamageable damageable = hitInfo.transform.GetComponent<IDamageable>();
                     damageable?.TakeDamage(gunData.damage);
                 }
+                recoil.recoil();
+
                 gunData.currentAmmo--;
                 timeSinceLastShot = 0;
                 OnGunShot();
-
+                
             }
         }
     }
@@ -66,7 +73,5 @@ public class Gun : MonoBehaviour
     }
 
     private void OnGunShot()
-    {
-
-    }
+    {    }
 }

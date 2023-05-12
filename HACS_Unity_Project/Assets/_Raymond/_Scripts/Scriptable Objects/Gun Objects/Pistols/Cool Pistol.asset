@@ -20,3 +20,14 @@ MonoBehaviour:
   fireRate: 200
   reloadTime: 1
   reloading: 0
+  recoilX: -0.5
+  recoilY: 0.3
+  recoilZ: 0.3
+  kickZ: 0.3
+  snappiness: 40
+  returnAmount: 8
+  aimSpeedMultiplier: 20
+  aimSpeed: 0.5
+  playerPrefab: {fileID: 6159813370117294016, guid: e6ec8531f15d74228a8cb2653b4899c9, type: 3}
+  aimfov: 60
+  weaponPrefab: {fileID: 3214544398459233453, guid: 9026c7acd2f2342f68c77c40b7abfb38, type: 3}

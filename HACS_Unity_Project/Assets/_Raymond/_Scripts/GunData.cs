@@ -18,4 +18,18 @@ public class GunData : ScriptableObject
     public float fireRate;
     public float reloadTime;
     public bool reloading;
+
+    [Header("Recoil/aim")]
+    public float recoilX;
+    public float recoilY;
+    public float recoilZ;
+    public float kickZ;
+    public float snappiness;
+    public float returnAmount;
+    public float aimSpeedMultiplier;
+    public float aimSpeed = 0.5f;
+
+    public GameObject playerPrefab; //for camera holder, view
+    public float aimfov;
+    public GameObject weaponPrefab; //for aimLocation, muzzle
 }

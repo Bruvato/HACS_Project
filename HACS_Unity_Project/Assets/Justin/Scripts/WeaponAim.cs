@@ -9,10 +9,7 @@ public class WeaponAim : MonoBehaviour
     public LayerMask targets;
     //camera
     public Transform rayEmitter;
-    public Transform returnPoint;
-
-    public float gunLength = 5f;
-    public Transform gunOrigin;
+    private Transform gunOrigin;
     //ray origin
     Vector3 origin;
     private RaycastHit hit;
@@ -24,7 +21,7 @@ public class WeaponAim : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        gunOrigin = gameObject.transform;
     }
 
     // Update is called once per frame

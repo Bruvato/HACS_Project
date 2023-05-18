@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
+
 
 public class Gun : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GunData gunData;
     [SerializeField] private Camera cam;
+    [SerializeField] private WeaponRecoil recoil;
+    private Transform muzzle;
+    private string muzzlePath;
+    private LayerMask targets;
 
     private float timeSinceLastShot;
 
@@ -14,6 +20,9 @@ public class Gun : MonoBehaviour
     {
         PlayerShoot.shootInput += Shoot;
         PlayerShoot.reloadInput += StartReload;
+        targets = gunData.targets;
+        muzzlePath = "Weapon Holder/"+gunData.name+"/Muzzle";
+        muzzle = GameObject.Find(muzzlePath).transform;
     }
 
     private void OnDisable() => gunData.reloading = false;
@@ -40,17 +49,25 @@ public class Gun : MonoBehaviour
 
     private void Shoot()
     {
+        Debug.Log("recoil");
+
         if (gunData.currentAmmo > 0)
         {
             if (CanShoot())
+
             {
-                if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hitInfo, gunData.maxDistance))
+                if (Physics.Raycast(/*cam.transform.position, cam.transform.forward,*/muzzle.position, muzzle.forward, out RaycastHit hitInfo, gunData.maxDistance, targets))
                 {
-                    //Debug.Log(hitInfo.transform.name);
+
+                    Debug.Log(hitInfo.transform.name);
+                    
 
                     IDamageable damageable = hitInfo.transform.GetComponent<IDamageable>();
                     damageable?.TakeDamage(gunData.damage);
+
                 }
+                recoil.recoil();
+
                 gunData.currentAmmo--;
                 timeSinceLastShot = 0;
                 OnGunShot();
@@ -62,11 +79,11 @@ public class Gun : MonoBehaviour
     private void Update()
     {
         timeSinceLastShot += Time.deltaTime;
-        Debug.DrawRay(cam.transform.position, cam.transform.forward * gunData.maxDistance, Color.red);
+        Debug.DrawRay(muzzle.position, muzzle.forward*gunData.maxDistance, Color.red);
     }
 
     private void OnGunShot()
-    {
+    { }
 
-    }
+    
 }

@@ -5,7 +5,8 @@ using UnityEngine;
 public class CrosshairFollow : MonoBehaviour
 {
     public LayerMask targets;
-    public Transform bulletEmitter;
+    private Transform bulletEmitter;
+    
     public Camera cam;
     private Vector3 source;
     private Ray bulletPath;
@@ -23,6 +24,7 @@ public class CrosshairFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         source = new Vector3(bulletEmitter.position.x, bulletEmitter.position.y, bulletEmitter.position.z);
         bulletPath = new Ray(source, bulletEmitter.forward);
         if(Physics.Raycast(bulletPath, out hit, range, targets))

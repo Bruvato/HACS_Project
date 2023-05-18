@@ -13,7 +13,7 @@ public class EnemyNavMesh : MonoBehaviour
     [Range(-1, 1)]
     public float hideSensitivity = 0;
     [Range(1, 10)]
-    public float minPlayerDistance = 5f;
+    public float minPlayerDistance = 10f;
 
     private Coroutine MovementCoroutine;
     private Collider[] colliders = new Collider[10];

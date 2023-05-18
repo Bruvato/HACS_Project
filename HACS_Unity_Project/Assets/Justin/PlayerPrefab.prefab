@@ -5487,7 +5487,9 @@ MonoBehaviour:
   maxHealthText: {fileID: 0}
   currentStamText: {fileID: 0}
   maxStamText: {fileID: 0}
-  gunDataList: []
+  gunDataList:
+  - {fileID: 11400000, guid: 1ddb809dbf51e472890d0a948f833d68, type: 2}
+  - {fileID: 11400000, guid: c8fb8a95a64bc4392b6c25502c34ad17, type: 2}
   ammoText: {fileID: 0}
   weaponName: {fileID: 0}
   reloadCricle: {fileID: 0}
@@ -5642,6 +5644,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 7908710255140331803}
     m_Modifications:
     - target: {fileID: 200985527303113873, guid: 9026c7acd2f2342f68c77c40b7abfb38, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 200985527303113873, guid: 9026c7acd2f2342f68c77c40b7abfb38, type: 3}
       propertyPath: rayEmitter
       value: 
       objectReference: {fileID: 7908710255043215102}
@@ -5715,6 +5721,18 @@ PrefabInstance:
       propertyPath: rayEmitter
       value: 
       objectReference: {fileID: 7908710255043215102}
+    - target: {fileID: 200985526940255500, guid: 0a9b050c79c4c4e3bad849b020892608, type: 3}
+      propertyPath: targets.m_Bits
+      value: 192
+      objectReference: {fileID: 0}
+    - target: {fileID: 200985526940255501, guid: 0a9b050c79c4c4e3bad849b020892608, type: 3}
+      propertyPath: fov
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 200985526940255501, guid: 0a9b050c79c4c4e3bad849b020892608, type: 3}
+      propertyPath: aimfov
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 4132753749079233500, guid: 0a9b050c79c4c4e3bad849b020892608, type: 3}
       propertyPath: cam
       value: 

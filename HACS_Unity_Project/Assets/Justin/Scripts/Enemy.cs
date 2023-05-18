@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamageable
 {
     public float hp = 100f, initHp;
     private Rigidbody rb;
@@ -15,7 +15,11 @@ public class Enemy : MonoBehaviour
         rb.isKinematic = true;
         initHp = hp;
     }
-
+    public void TakeDamage(float damage)
+    {
+        hp -= damage;
+        Debug.Log("damage");
+    }
     // Update is called once per frame
     void Update()
     {

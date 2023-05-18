@@ -79,8 +79,6 @@ public class WeaponRecoil : MonoBehaviour
         }
         else
         {
-            Debug.Log("update else");
-
             aimTarget2 = Vector3.Lerp(aimTarget2, initialPosition2, aimSpeed * Time.deltaTime);
             currentAim2 = Vector3.Lerp(currentAim2, aimTarget2, aimSpeed * Time.deltaTime);
             initialPosition = currentAim2;

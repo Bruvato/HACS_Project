@@ -2752,6 +2752,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4132753749079233501}
   - component: {fileID: 4132753749079233500}
+  - component: {fileID: 200985526940255500}
+  - component: {fileID: 200985526940255501}
   m_Layer: 0
   m_Name: Assault Rifle
   m_TagString: Untagged
@@ -2790,7 +2792,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunData: {fileID: 11400000, guid: c8fb8a95a64bc4392b6c25502c34ad17, type: 2}
   cam: {fileID: 0}
-  recoil: {fileID: 0}
+  recoil: {fileID: 200985526940255501}
+--- !u!114 &200985526940255500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4132753749079233502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 022f2f64ebaaa4d01a72bb1aa8367d33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 50
+  targets:
+    serializedVersion: 2
+    m_Bits: 64
+  rayEmitter: {fileID: 0}
+  speed: 10
+--- !u!114 &200985526940255501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4132753749079233502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 490ce54138eaa4902995fd6ea928ef6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunData: {fileID: 11400000, guid: c8fb8a95a64bc4392b6c25502c34ad17, type: 2}
+  fov: 120
+  aimfov: 0
 --- !u!1 &4292061178525644541
 GameObject:
   m_ObjectHideFlags: 0

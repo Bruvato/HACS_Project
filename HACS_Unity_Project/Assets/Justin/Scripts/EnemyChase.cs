@@ -55,7 +55,7 @@ public class EnemyChase : MonoBehaviour
 
     private IEnumerator Chase(Transform target)
     {
-        WaitForSeconds Wait = new WaitForSeconds(1f);
+        WaitForSeconds Wait = new WaitForSeconds(0.75f);
         chase = logic.shouldChase;
         while (chase == true)
         {

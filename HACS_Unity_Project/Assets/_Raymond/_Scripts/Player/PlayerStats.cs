@@ -38,12 +38,12 @@ public class PlayerStats : CharacterStats
             takeDamge(10);
         }
 
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKey(KeyCode.I))
         {
-            DecreaseStam(10);
+            DecreaseStam(1);
         }
-        
-        
+
+
         RegenerateStam();
     }
 

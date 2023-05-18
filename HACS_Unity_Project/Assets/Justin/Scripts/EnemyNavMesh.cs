@@ -58,7 +58,7 @@ public class EnemyNavMesh : MonoBehaviour
     {
         WaitForSeconds Wait = new WaitForSeconds(1f);
         hide = logic.shouldHide;
-        while (hide = true)
+        while (hide == true)
         {
             Debug.Log("while");
 

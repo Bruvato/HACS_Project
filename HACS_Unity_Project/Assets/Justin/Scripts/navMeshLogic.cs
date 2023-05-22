@@ -17,11 +17,11 @@ public class navMeshLogic : MonoBehaviour
         shouldChase = false;
         shouldHide = false;
         isAlert = false;
-
+        UpdateStatus();
     }
 
     // Update is called once per frame
-    void Update()
+    public void UpdateStatus()
     {
         if (stats.hp > hideThreshold * stats.initHp)
         {
@@ -40,6 +40,15 @@ public class navMeshLogic : MonoBehaviour
         {
             shouldHide = false;
         }
+
+        /*command list: 
+        0 = stand ground
+        1 = retreat
+        2 = advance
+        3 = search
+        4 = rally
+        5 = 
+        */
     }
 
 

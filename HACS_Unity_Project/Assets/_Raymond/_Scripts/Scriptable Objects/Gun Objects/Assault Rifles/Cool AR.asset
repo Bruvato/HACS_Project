@@ -31,6 +31,6 @@ MonoBehaviour:
   returnAmount: 8
   aimSpeedMultiplier: 20
   aimSpeed: 0.5
-  playerPrefab: {fileID: 8184438371884598435, guid: e6ec8531f15d74228a8cb2653b4899c9, type: 3}
+  playerPrefab: {fileID: 4212946791966539887, guid: da31c546d3b744e41b06fedc609ce1d0, type: 3}
   aimfov: 0
   weaponPrefab: {fileID: 4132753749079233502, guid: 0a9b050c79c4c4e3bad849b020892608, type: 3}

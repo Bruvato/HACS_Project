@@ -42,14 +42,12 @@ public class EnemyNavMesh : MonoBehaviour
         }
         player = target;
 
-        if(hide = true){
+        if(hide == true){
         MovementCoroutine = StartCoroutine(Hide(target));
         }
-        if(chase = true){
+        if(chase == true){
         MovementCoroutine = StartCoroutine(Chase(target));
         }
-
-        Debug.Log("handlegain");
 
     }
     private void HandleLoseSight(Transform target)
@@ -59,7 +57,6 @@ public class EnemyNavMesh : MonoBehaviour
             StopCoroutine(MovementCoroutine);
         }
         player = null;
-        Debug.Log("handlelose");
 
     }
     private void GetLogic(){
@@ -75,6 +72,8 @@ public class EnemyNavMesh : MonoBehaviour
             
             GetLogic();
 
+            navMeshAgent.SetDestination(target.position);
+            
             yield return Wait;
         }
         HandleGainSight(target);
@@ -98,7 +97,6 @@ public class EnemyNavMesh : MonoBehaviour
             }
 
             int hits = Physics.OverlapSphereNonAlloc(navMeshAgent.transform.position, LOSChecker.c.radius, colliders, hidableLayers);
-            Debug.Log("overlap sphere");
             Debug.Log(hits);
 
             int hitReduction = 0;

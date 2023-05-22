@@ -91,7 +91,7 @@ public class WeaponRecoil : MonoBehaviour
         targetRotation = Vector3.Lerp(targetRotation, Vector3.zero, returnAmount * Time.deltaTime);
         currentRotation = Vector3.Slerp(currentRotation, targetRotation, snappiness * Time.deltaTime);
         transform.Rotate(currentRotation); 
-        cam.localRotation = Quaternion.Euler(currentRotation);
+        // cam.localRotation = Quaternion.Euler(currentRotation);
 
         back();//kick
     }

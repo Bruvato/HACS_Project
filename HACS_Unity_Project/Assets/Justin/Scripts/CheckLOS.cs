@@ -22,7 +22,6 @@ public class CheckLOS : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("enter");
         if (!CheckLineOfSight(other.transform))
         {
             CheckForLineOfSightCoroutine =  StartCoroutine(CheckForLineOfSight(other.transform));
@@ -31,8 +30,7 @@ public class CheckLOS : MonoBehaviour
     }
 
     private void OnTriggerExit(Collider other)
-    {
-        onLoseSight?.Invoke(other.transform);
+    {        onLoseSight?.Invoke(other.transform);
         if (CheckForLineOfSightCoroutine != null)
         {
             StopCoroutine(CheckForLineOfSightCoroutine);
@@ -50,7 +48,6 @@ public class CheckLOS : MonoBehaviour
             if (Physics.Raycast(this.transform.position, direction, out RaycastHit hit, c.radius, LineOfSightLayers))
             {
                 // if(hit.gameObject.layer = )
-                Debug.Log("enter");
                 Debug.Log(c.radius);
                 onGainSight?.Invoke(target);
                 return true;

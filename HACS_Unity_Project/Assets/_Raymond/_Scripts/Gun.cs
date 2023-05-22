@@ -21,7 +21,7 @@ public class Gun : MonoBehaviour
         PlayerShoot.shootInput += Shoot;
         PlayerShoot.reloadInput += StartReload;
         targets = gunData.targets;
-        muzzlePath = "Weapon Holder/" + gunData.name + "/Muzzle";
+        muzzlePath = "Weapon Holder/"+gunData.name+"/Muzzle";
         muzzle = GameObject.Find(muzzlePath).transform;
     }
 
@@ -60,7 +60,7 @@ public class Gun : MonoBehaviour
                 {
 
                     Debug.Log(hitInfo.transform.name);
-
+                    
 
                     IDamageable damageable = hitInfo.transform.GetComponent<IDamageable>();
                     damageable?.TakeDamage(gunData.damage);
@@ -79,11 +79,11 @@ public class Gun : MonoBehaviour
     private void Update()
     {
         timeSinceLastShot += Time.deltaTime;
-        Debug.DrawRay(muzzle.position, muzzle.forward * gunData.maxDistance, Color.red);
+        Debug.DrawRay(muzzle.position, muzzle.forward*gunData.maxDistance, Color.red);
     }
 
     private void OnGunShot()
     { }
 
-
+    
 }

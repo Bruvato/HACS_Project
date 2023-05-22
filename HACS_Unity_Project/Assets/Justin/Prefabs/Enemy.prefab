@@ -171,7 +171,7 @@ MonoBehaviour:
   shouldHide: 0
   shouldChase: 0
   isAlert: 0
-  LOSChecker: {fileID: 0}
+  LOSChecker: {fileID: 4851605955106389980}
   stats: {fileID: 1458973748}
   hideThreshold: 0.5
 --- !u!114 &1458973758
@@ -194,7 +194,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   LOSChecker: {fileID: 4851605955106389980}
-  hideSensitivity: 0
+  hideSensitivity: 0.35
   minPlayerDistance: 10
   navMeshAgent: {fileID: 2524904797318772089}
 --- !u!1 &3166333948490533497

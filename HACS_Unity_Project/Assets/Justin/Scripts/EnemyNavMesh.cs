@@ -23,7 +23,9 @@ public class EnemyNavMesh : MonoBehaviour
 
 
     private void Awake()
-    {
+    {                
+        GetLogic();
+
         // GameObject target = GameObject.FindWithTag("target");
         // movePositionTransform = target.transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -33,6 +35,7 @@ public class EnemyNavMesh : MonoBehaviour
 
     private void HandleGainSight(Transform target)
     {
+        GetLogic();
         if (MovementCoroutine != null)
         {
             StopCoroutine(MovementCoroutine);

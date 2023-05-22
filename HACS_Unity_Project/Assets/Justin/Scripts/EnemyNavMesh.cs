@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemyNavMesh : MonoBehaviour
 {
     public navMeshLogic logic;
-    public bool hide;
+    private bool hide, chase;
     public Transform player;
     public LayerMask hidableLayers;
     public CheckLOS LOSChecker;
@@ -20,29 +20,43 @@ public class EnemyNavMesh : MonoBehaviour
 
     private Transform movePositionTransform;
     public NavMeshAgent navMeshAgent;
-
+    private void GetLogic()
+    {
+        logic.UpdateStatus();
+        hide = logic.shouldHide;
+        chase = logic.shouldChase;
+    }
 
     private void Awake()
     {
         // GameObject target = GameObject.FindWithTag("target");
         // movePositionTransform = target.transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
-        hide = logic.shouldHide;
+        // navMeshLogic. += GetLogic;
         LOSChecker.onGainSight += HandleGainSight;
         LOSChecker.onLoseSight += HandleLoseSight;
     }
 
     private void HandleGainSight(Transform target)
     {
+        GetLogic();
         if (MovementCoroutine != null)
         {
             StopCoroutine(MovementCoroutine);
         }
         player = target;
-        MovementCoroutine = StartCoroutine(Hide(target));
+        // MovementCoroutine = StartCoroutine(Chase(target));
+        if (hide)
+        {
+            MovementCoroutine = StartCoroutine(Hide(target));
+        }
+        if (chase)
+        {
+            MovementCoroutine = StartCoroutine(Chase(target));
+        }
         Debug.Log("handlegain");
-
     }
+
     private void HandleLoseSight(Transform target)
     {
         if (MovementCoroutine != null)
@@ -51,13 +65,26 @@ public class EnemyNavMesh : MonoBehaviour
         }
         player = null;
         Debug.Log("handlelose");
-
     }
+    private IEnumerator Chase(Transform target)
+    {
+        WaitForSeconds Wait = new WaitForSeconds(0.5f);
+        while (chase == true)
+        {
+            GetLogic();
+            yield return Wait;
+        }
+        HandleGainSight(target);
+    }
+
+    // private IEnumerator HoldDistance(Transform target, float range)
+    // {
+        
+    // }
 
     private IEnumerator Hide(Transform target)
     {
         WaitForSeconds Wait = new WaitForSeconds(1f);
-        hide = logic.shouldHide;
         while (hide == true)
         {
             Debug.Log("while");
@@ -118,9 +145,13 @@ public class EnemyNavMesh : MonoBehaviour
                 }
                 // break;
             }
+            GetLogic();
             yield return Wait;
 
         }
+        HandleGainSight(target);
+
+
     }
     // private void Update()
     // {

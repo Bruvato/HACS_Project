@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour, IDamageable
 {
     public float hp = 100f, initHp;
+    public int command;
     private Rigidbody rb;
     private EnemyPool pool;
     // Start is called before the first frame update

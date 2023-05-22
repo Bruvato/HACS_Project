@@ -28889,6 +28889,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1594608949, guid: e6ec8531f15d74228a8cb2653b4899c9, type: 3}
+      propertyPath: stamBar
+      value: 
+      objectReference: {fileID: 331120215}
+    - target: {fileID: 1594608949, guid: e6ec8531f15d74228a8cb2653b4899c9, type: 3}
+      propertyPath: ammoText
+      value: 
+      objectReference: {fileID: 1404279047}
+    - target: {fileID: 1594608949, guid: e6ec8531f15d74228a8cb2653b4899c9, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 62204962}
+    - target: {fileID: 1594608949, guid: e6ec8531f15d74228a8cb2653b4899c9, type: 3}
+      propertyPath: weaponName
+      value: 
+      objectReference: {fileID: 381247399}
+    - target: {fileID: 1594608949, guid: e6ec8531f15d74228a8cb2653b4899c9, type: 3}
+      propertyPath: reloadCricle
+      value: 
+      objectReference: {fileID: 1923178253}
+    - target: {fileID: 1594608949, guid: e6ec8531f15d74228a8cb2653b4899c9, type: 3}
+      propertyPath: currentStamText
+      value: 
+      objectReference: {fileID: 1486696964}
+    - target: {fileID: 1594608949, guid: e6ec8531f15d74228a8cb2653b4899c9, type: 3}
+      propertyPath: currentHealthText
+      value: 
+      objectReference: {fileID: 1681842410}
     - target: {fileID: 3742356357158148971, guid: e6ec8531f15d74228a8cb2653b4899c9, type: 3}
       propertyPath: m_RootOrder
       value: 1

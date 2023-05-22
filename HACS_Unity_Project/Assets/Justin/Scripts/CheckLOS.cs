@@ -22,6 +22,7 @@ public class CheckLOS : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("enter");
         if (!CheckLineOfSight(other.transform))
         {
             CheckForLineOfSightCoroutine =  StartCoroutine(CheckForLineOfSight(other.transform));

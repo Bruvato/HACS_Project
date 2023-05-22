@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemyNavMesh : MonoBehaviour
 {
     public navMeshLogic logic;
-    public bool hide;
+    public bool hide, chase;
     public Transform player;
     public LayerMask hidableLayers;
     public CheckLOS LOSChecker;
@@ -27,7 +27,6 @@ public class EnemyNavMesh : MonoBehaviour
         // GameObject target = GameObject.FindWithTag("target");
         // movePositionTransform = target.transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
-        hide = logic.shouldHide;
         LOSChecker.onGainSight += HandleGainSight;
         LOSChecker.onLoseSight += HandleLoseSight;
     }
@@ -39,7 +38,14 @@ public class EnemyNavMesh : MonoBehaviour
             StopCoroutine(MovementCoroutine);
         }
         player = target;
+
+        if(hide = true){
         MovementCoroutine = StartCoroutine(Hide(target));
+        }
+        if(chase = true){
+        MovementCoroutine = StartCoroutine(Chase(target));
+        }
+
         Debug.Log("handlegain");
 
     }
@@ -53,14 +59,35 @@ public class EnemyNavMesh : MonoBehaviour
         Debug.Log("handlelose");
 
     }
+    private void GetLogic(){
+        
+        logic.UpdateStatus();
+        hide = logic.shouldHide;
+        chase = logic.shouldChase;
+
+    }
+    private IEnumerator Chase(Transform target){
+        WaitForSeconds Wait = new WaitForSeconds(1f);
+        while(chase == true){
+            
+            GetLogic();
+
+            yield return Wait;
+        }
+        HandleGainSight(target);
+
+    }
+
 
     private IEnumerator Hide(Transform target)
     {
         WaitForSeconds Wait = new WaitForSeconds(1f);
-        hide = logic.shouldHide;
         while (hide == true)
         {
-            Debug.Log("while");
+
+            GetLogic();
+
+            Debug.Log("hiding");
 
             for (int i = 0; i < colliders.Length; i++)
             {
@@ -121,6 +148,7 @@ public class EnemyNavMesh : MonoBehaviour
             yield return Wait;
 
         }
+
     }
     // private void Update()
     // {
@@ -144,7 +172,12 @@ public class EnemyNavMesh : MonoBehaviour
         {
             return Vector3.Distance(navMeshAgent.transform.position, A.transform.position).CompareTo(Vector3.Distance(navMeshAgent.transform.position, B.transform.position));
         }
+
+        
     }
+    
+
+    
 }
 
 

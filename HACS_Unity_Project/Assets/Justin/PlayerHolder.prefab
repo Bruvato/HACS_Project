@@ -5683,7 +5683,9 @@ MonoBehaviour:
   maxHealthText: {fileID: 0}
   currentStamText: {fileID: 0}
   maxStamText: {fileID: 0}
-  gunDataList: []
+  gunDataList:
+  - {fileID: 11400000, guid: 1ddb809dbf51e472890d0a948f833d68, type: 2}
+  - {fileID: 11400000, guid: c8fb8a95a64bc4392b6c25502c34ad17, type: 2}
   ammoText: {fileID: 0}
   weaponName: {fileID: 0}
   reloadCricle: {fileID: 0}

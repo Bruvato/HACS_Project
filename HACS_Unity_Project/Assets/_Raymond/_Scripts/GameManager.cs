@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        Pause();
+
         if (player.position.y < -20)
         {
             RestartLevel();
@@ -50,6 +52,14 @@ public class GameManager : MonoBehaviour
     public int GetLevel()
     {
         return level;
+    }
+
+    private void Pause()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
 

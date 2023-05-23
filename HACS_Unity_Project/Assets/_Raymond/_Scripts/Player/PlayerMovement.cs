@@ -17,10 +17,10 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] private float moveSpeed; //base move speed
-    [SerializeField] [Range(0f, 100f)] private float walkSpeed; 
-    [SerializeField] [Range(0f, 100f)] private float sprintSpeed;
-    [SerializeField] [Range(0f, 100f)] private float crouchSpeed;
-    [SerializeField] [Range(0f, 100f)] private float dashSpeed;
+    [SerializeField][Range(0f, 100f)] private float walkSpeed;
+    [SerializeField][Range(0f, 100f)] private float sprintSpeed;
+    [SerializeField][Range(0f, 100f)] private float crouchSpeed;
+    [SerializeField][Range(0f, 100f)] private float dashSpeed;
     [SerializeField] private float aceleration;
 
     [SerializeField] private float movementMultiplier;
@@ -88,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Move();
         ControlGravity();
-        
+
     }
 
     private void MyInput()
@@ -103,8 +103,8 @@ public class PlayerMovement : MonoBehaviour
 
         sprintKey = Input.GetKey(KeyCode.LeftShift);
 
-        dashKeyDown = Input .GetKeyDown(KeyCode.LeftShift);
-        dashKeyUp = Input .GetKeyUp(KeyCode.LeftShift);
+        dashKeyDown = Input.GetKeyDown(KeyCode.LeftShift);
+        dashKeyUp = Input.GetKeyUp(KeyCode.LeftShift);
 
 
         crouchKey = Input.GetKey(KeyCode.LeftControl);
@@ -126,23 +126,23 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * movementMultiplier * airMultiplier, ForceMode.Force);
         }
-            
+
     }
 
     private void ControlSpeed()
     {
         if (sprintKey && !crouchKey) //spriting
         {
-             setSpeed(sprintSpeed);
+            setSpeed(sprintSpeed);
         }
         else if (crouchKey && isGrounded && !sprintKey) //crouching
         {
-             setSpeed(crouchSpeed);
+            setSpeed(crouchSpeed);
         }
 
         else //walking
         {
-             setSpeed(walkSpeed);
+            setSpeed(walkSpeed);
         }
     }
 
@@ -157,7 +157,7 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.localScale = Vector3.one;
         }
-            
+
     }
 
     private void Slide()
@@ -175,7 +175,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void ControlGravity()
     {
-        //rb.AddForce(Vector3.up * playerGravity, ForceMode.Force); //additional gravity for player
+        rb.AddForce(Vector3.up * playerGravity, ForceMode.Force); //additional gravity for player
     }
 
     private void ControlDrag()
@@ -192,9 +192,9 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.drag = airDrag;
         }
-        
+
     }
-        
+
     private void Jump()
     {
         if (jumpKey && isGrounded)
@@ -296,5 +296,5 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    
+
 }

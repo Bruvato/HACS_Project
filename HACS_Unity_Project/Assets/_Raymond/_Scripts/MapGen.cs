@@ -11,16 +11,19 @@ public class MapGen : MonoBehaviour
 
     [SerializeField] private int islandSpacing = 10;
     [SerializeField] private GameObject mapGen;
+    private static int count = 1;
 
 
     private void Start()
     {
 
-        for (int i = 1; i < rows; i++)
+        if (count < rows)
         {
-            Instantiate(mapGen, mapGen.transform.position + Vector3.forward * i * islandSpacing, mapGen.transform.rotation);
-
+            Instantiate(mapGen, mapGen.transform.position + Vector3.forward * islandSpacing, mapGen.transform.rotation);
+            Debug.Log(count);
+            count++;
         }
+
 
 
         Generate();
@@ -44,7 +47,7 @@ public class MapGen : MonoBehaviour
                 Destroy(spawnLocs[i].GetChild(0).gameObject);
             }
             int ranNum = Random.Range(0, islandPrefabs.Length);
-            Vector3 ranHeight = new Vector3(spawnLocs[i].position.x, Random.Range(-1, 1), spawnLocs[i].position.z);
+            Vector3 ranHeight = new Vector3(spawnLocs[i].position.x, Random.Range(-2, 2), spawnLocs[i].position.z);
             GameObject island = Instantiate(islandPrefabs[ranNum], ranHeight, islandPrefabs[ranNum].transform.rotation);
             island.transform.SetParent(spawnLocs[i]);
 

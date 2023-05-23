@@ -270,7 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunData: {fileID: 11400000, guid: d13caffaa21d145f2b751ec2e819ede1, type: 2}
   recoil: {fileID: 2022532453}
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 6104488769976911482, guid: 86fd620124025a74c94c3dfbed4eb3e4, type: 3}
   forceMultiplier: 200
 --- !u!114 &2022532455
 MonoBehaviour:

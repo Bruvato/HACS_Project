@@ -5736,7 +5736,7 @@ MonoBehaviour:
   groundDrag: 6
   airDrag: 2
   slideDrag: 0
-  jumpForce: 15
+  jumpForce: 30
   playerGravity: -30
   groundMask:
     serializedVersion: 2

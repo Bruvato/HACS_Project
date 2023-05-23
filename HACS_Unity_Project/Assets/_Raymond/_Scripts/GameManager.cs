@@ -8,10 +8,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        // if (player.transform.position.y < -20)
-        // {
-        //     RestartLevel();
-        // }
+        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            RestartLevel();
+        }
     }
 
     private void RestartLevel()
@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     public void StartLevel()
     {
-        Debug.Log("lvl started");
+        SceneManager.LoadScene("levels");
     }
 
 

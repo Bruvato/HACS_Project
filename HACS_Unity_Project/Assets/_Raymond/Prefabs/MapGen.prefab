@@ -250,6 +250,7 @@ MonoBehaviour:
   - {fileID: 6340774949188748140, guid: e05e3c0f2f0f6410b8b00b57a4aad1b0, type: 3}
   - {fileID: 6340774949188748140, guid: e05e3c0f2f0f6410b8b00b57a4aad1b0, type: 3}
   - {fileID: 5637299515855795747, guid: f7ffbbc4a9d45448e9c92ffd1f5fa77a, type: 3}
+  - {fileID: 1929405425802594219, guid: 9870d64b1d61e477a895a5260aa41e03, type: 3}
   spawnLocs:
   - {fileID: 3203021796227296564}
   - {fileID: 3203021794532191159}

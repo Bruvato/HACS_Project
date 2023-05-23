@@ -6,7 +6,7 @@ public class Trigger : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
 
-    private void OnTrigger()
+    private void OnTriggerEnter()
     {
         gameManager.StartLevel();
     }

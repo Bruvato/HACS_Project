@@ -16,14 +16,7 @@ public class MapGen : MonoBehaviour
 
     private void Start()
     {
-
-        if (count < rows)
-        {
-            Instantiate(mapGen, mapGen.transform.position + Vector3.forward * islandSpacing, mapGen.transform.rotation);
-            count++;
-        }
-
-
+        GenerateSpawnLocs();
 
         Generate();
 
@@ -51,6 +44,16 @@ public class MapGen : MonoBehaviour
             island.transform.SetParent(spawnLocs[i]);
 
         }
+    }
+
+    private void GenerateSpawnLocs()
+    {
+        if (count < rows)
+        {
+            Instantiate(mapGen, mapGen.transform.position + Vector3.forward * islandSpacing, mapGen.transform.rotation);
+            count++;
+        }
+
     }
 
 }

@@ -8,6 +8,6 @@ public class Trigger : MonoBehaviour
 
     private void OnTriggerEnter()
     {
-        gameManager.StartLevel();
+        gameManager.RestartLevel();
     }
 }

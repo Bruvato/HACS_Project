@@ -14,12 +14,16 @@ public class MapGen : MonoBehaviour
     private static int count = 1;
 
 
-    private void Start()
+    public void Start()
     {
         GenerateSpawnLocs();
 
         Generate();
 
+    }
+    public void ChangeCount(int c)
+    {
+        count = c;
     }
 
     private void Update()

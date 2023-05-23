@@ -20,7 +20,6 @@ public class MapGen : MonoBehaviour
         if (count < rows)
         {
             Instantiate(mapGen, mapGen.transform.position + Vector3.forward * islandSpacing, mapGen.transform.rotation);
-            Debug.Log(count);
             count++;
         }
 

@@ -21,9 +21,13 @@ public class MapGen : MonoBehaviour
         Generate();
 
     }
-    public void ChangeCount(int c)
+    public void SetCount(int c)
     {
         count = c;
+    }
+    public void SetRows(int r)
+    {
+        rows = r;
     }
 
     private void Update()

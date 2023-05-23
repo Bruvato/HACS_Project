@@ -5,8 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Refrences")]
     [SerializeField] private MapGen mapGen;
     [SerializeField] private Transform player;
+
+    [Header("Vars")]
+    [SerializeField] private static int level = 1;
+
+    private void Start()
+    {
+        mapGen.SetCount(1);
+        mapGen.SetRows(level * 5);
+    }
 
     private void Update()
     {
@@ -24,13 +34,16 @@ public class GameManager : MonoBehaviour
     public void RestartLevel()
     {
         SceneManager.LoadScene("levels");
-        mapGen.ChangeCount(1);
+        mapGen.SetCount(1);
         mapGen.Start();
     }
 
     private void CompleteLevel()
     {
         SceneManager.LoadScene("lobby");
+        level++;
+        mapGen.SetRows(level * 5);
+
     }
 
 

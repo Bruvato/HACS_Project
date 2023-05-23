@@ -29,17 +29,17 @@ public class WeaponRecoil : MonoBehaviour
     {
         cam = gunData.playerPrefab.transform.GetChild(0);
         aimLocation = gunData.weaponPrefab.transform.GetChild(1);
+
         recoilX = gunData.recoilX;
         recoilY = gunData.recoilY;
         recoilZ = gunData.recoilZ;
         kickZ = gunData.kickZ;
+        
         snappiness = gunData.snappiness;
         returnAmount = gunData.returnAmount;
         aimSpeedMultiplier = gunData.aimSpeedMultiplier;
         aimSpeed = gunData.aimSpeed;
         
-
-
         initialPosition = transform.localPosition;
         initialPosition2 = transform.localPosition;
         originalPosition = transform.localPosition;

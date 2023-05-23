@@ -18,8 +18,8 @@ MonoBehaviour:
   maxDistance: 100
   targets:
     serializedVersion: 2
-    m_Bits: 192
-  currentAmmo: 1
+    m_Bits: 8
+  currentAmmo: 9244
   magSize: 18
   fireRate: 200
   reloadTime: 1

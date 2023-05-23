@@ -9,6 +9,9 @@ public class EnemyGun : MonoBehaviour
     [Header("References")]
     [SerializeField] private GunData gunData;
     [SerializeField] private WeaponRecoil recoil;
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private float forceMultiplier;
+
     private Transform muzzle;
     private string muzzlePath;
     private LayerMask targets;
@@ -22,6 +25,7 @@ public class EnemyGun : MonoBehaviour
         targets = gunData.targets;
         muzzlePath = "Enemy Weapon Holder/"+gunData.name+"/Muzzle";
         muzzle = GameObject.Find(muzzlePath).transform;
+        
     }
 
     private void OnDisable() => gunData.reloading = false;
@@ -48,23 +52,17 @@ public class EnemyGun : MonoBehaviour
 
     private void Shoot()
     {
-        Debug.Log("recoil");
 
         if (gunData.currentAmmo > 0)
         {
             if (CanShoot())
 
             {
-                if (Physics.Raycast(muzzle.position, muzzle.forward, out RaycastHit hitInfo, gunData.maxDistance, targets))
-                {
+                Debug.Log("shooting");
+  
+                GameObject bullet = Instantiate(projectilePrefab, muzzle.position, muzzle.rotation);
+                bullet.GetComponent<Rigidbody>().AddForce(muzzle.forward*forceMultiplier, ForceMode.Impulse);
 
-                    Debug.Log(hitInfo.transform.name);
-                    
-
-                    IDamageable damageable = hitInfo.transform.GetComponent<IDamageable>();
-                    damageable?.TakeDamage(gunData.damage);
-
-                }
                 recoil.recoil();
 
                 gunData.currentAmmo--;

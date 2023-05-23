@@ -67,7 +67,7 @@ public class EnemyNavMesh : MonoBehaviour
 
     }
     private IEnumerator Chase(Transform target){
-        WaitForSeconds Wait = new WaitForSeconds(1f);
+        WaitForSeconds Wait = new WaitForSeconds(0.1f);
         while(chase == true){
             
             GetLogic();
@@ -116,7 +116,6 @@ public class EnemyNavMesh : MonoBehaviour
 
                 if (NavMesh.SamplePosition(colliders[i].transform.position, out NavMeshHit hit, 2f, navMeshAgent.areaMask))
                 {
-                    Debug.Log("samplePosition");
 
                     if (NavMesh.FindClosestEdge(hit.position, out hit, navMeshAgent.areaMask))
                     {

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [Header("Refrences")]
     [SerializeField] private MapGen mapGen;
     [SerializeField] private Transform player;
+    [SerializeField] private GameObject levelUI;
 
     [Header("Vars")]
     [SerializeField] private static int level = 1;
@@ -44,6 +45,11 @@ public class GameManager : MonoBehaviour
         level++;
         mapGen.SetRows(level * 5);
 
+    }
+
+    public int GetLevel()
+    {
+        return level;
     }
 
 

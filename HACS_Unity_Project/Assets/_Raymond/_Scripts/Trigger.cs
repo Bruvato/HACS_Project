@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Trigger : MonoBehaviour
 {
-    [SerializeField] private GameManager gameManager;
+    [SerializeField] private GameObject levelUI;
 
     private void OnTriggerEnter()
     {
-        gameManager.RestartLevel();
+        levelUI.SetActive(true);
     }
 }

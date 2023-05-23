@@ -49,7 +49,6 @@ public class Gun : MonoBehaviour
 
     private void Shoot()
     {
-        Debug.Log("recoil");
 
         if (gunData.currentAmmo > 0)
         {

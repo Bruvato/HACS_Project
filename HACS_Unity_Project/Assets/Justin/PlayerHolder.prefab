@@ -5766,7 +5766,7 @@ MonoBehaviour:
   wallCheckDistance: 1
   minJumpHeight: 1.5
   wallRunGravity: -1
-  wallRunJumpForce: 6
+  wallRunJumpForce: 15
   forceMultiplier: 100
   cam: {fileID: 200985527155194189}
   fov: 90

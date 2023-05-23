@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bb865cf307b1408bb3f265c4a17ba8f, type: 3}
+  m_Name: Enemy Cool Pistol
+  m_EditorClassIdentifier: 
+  name: Enemy Pistol
+  onEnemy: 0
+  damage: 16
+  maxDistance: 100
+  targets:
+    serializedVersion: 2
+    m_Bits: 192
+  currentAmmo: 1
+  magSize: 18
+  fireRate: 200
+  reloadTime: 1
+  reloading: 0
+  recoilX: -0.5
+  recoilY: 0.3
+  recoilZ: 0.3
+  kickZ: 0.3
+  snappiness: 40
+  returnAmount: 8
+  aimSpeedMultiplier: 20
+  aimSpeed: 0.5
+  playerPrefab: {fileID: 6159813370117294016, guid: e6ec8531f15d74228a8cb2653b4899c9, type: 3}
+  aimfov: 60
+  weaponPrefab: {fileID: 3214544398459233453, guid: 9026c7acd2f2342f68c77c40b7abfb38, type: 3}

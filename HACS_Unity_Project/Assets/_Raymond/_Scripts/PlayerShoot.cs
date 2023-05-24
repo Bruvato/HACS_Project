@@ -16,7 +16,7 @@ public class PlayerShoot : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             shootInput?.Invoke();
-        }  
+        }
 
         if (Input.GetKeyDown(reloadKey))
         {

@@ -16,14 +16,23 @@ public class Gun : MonoBehaviour
 
     private float timeSinceLastShot;
 
+
     public void Awake()
     {
+        DontDestroyOnLoad(gameObject);
+
         PlayerShoot.shootInput += Shoot;
         PlayerShoot.reloadInput += StartReload;
         targets = gunData.targets;
         // muzzlePath = "Weapon Holder/"+gunData.name+"/Muzzle";
         // muzzle = GameObject.Find(muzzlePath).transform;
         muzzle = gameObject.transform.GetChild(1);
+    }
+
+    private void OnDestroy()
+    {
+        PlayerShoot.shootInput -= Shoot;
+        PlayerShoot.reloadInput -= StartReload;
     }
 
     private void OnDisable() => gunData.reloading = false;
@@ -61,7 +70,7 @@ public class Gun : MonoBehaviour
                 {
 
                     Debug.Log(hitInfo.transform.name);
-                    
+
 
                     IDamageable damageable = hitInfo.transform.GetComponent<IDamageable>();
                     damageable?.TakeDamage(gunData.damage);
@@ -80,11 +89,12 @@ public class Gun : MonoBehaviour
     private void Update()
     {
         timeSinceLastShot += Time.deltaTime;
-        Debug.DrawRay(muzzle.position, muzzle.forward*gunData.maxDistance, Color.red);
+        Debug.DrawRay(muzzle.position, muzzle.forward * gunData.maxDistance, Color.red);
+
     }
 
     private void OnGunShot()
     { }
 
-    
+
 }

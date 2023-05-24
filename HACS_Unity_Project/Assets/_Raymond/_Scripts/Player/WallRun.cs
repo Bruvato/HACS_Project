@@ -22,7 +22,7 @@ public class WallRun : MonoBehaviour
     [SerializeField] private float wallRunFov;
     [SerializeField] private float fovLerpTime;
 
-    public float tilt {get; private set;}
+    public float tilt { get; private set; }
     [SerializeField] private float WallRunCamTilt;
     [SerializeField] private float camTiltLerpTime;
 
@@ -45,7 +45,7 @@ public class WallRun : MonoBehaviour
     {
         onLeftWall = Physics.Raycast(transform.position, -orientation.right, out leftWallHit, wallCheckDistance);
         onRightWall = Physics.Raycast(transform.position, orientation.right, out rightWallHit, wallCheckDistance);
-        Debug.DrawLine(this.transform.position, this.transform.position -orientation.right * wallCheckDistance, Color.red);
+        Debug.DrawLine(this.transform.position, this.transform.position - orientation.right * wallCheckDistance, Color.red);
         Debug.DrawLine(this.transform.position, this.transform.position + orientation.right * wallCheckDistance, Color.red);
     }
 
@@ -101,7 +101,7 @@ public class WallRun : MonoBehaviour
             }
             else if (onRightWall)
             {
-                 Vector3 wallRunJumpDirection = (transform.up + rightWallHit.normal).normalized;
+                Vector3 wallRunJumpDirection = (transform.up + rightWallHit.normal).normalized;
                 rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
                 rb.AddForce(wallRunJumpDirection * wallRunJumpForce * forceMultiplier, ForceMode.Force);
             }
@@ -115,6 +115,6 @@ public class WallRun : MonoBehaviour
 
         cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, fov, fovLerpTime * Time.deltaTime); //wallrun fov -> normal fov
 
-            tilt = Mathf.Lerp(tilt, 0, camTiltLerpTime * Time.deltaTime);
+        tilt = Mathf.Lerp(tilt, 0, camTiltLerpTime * Time.deltaTime);
     }
 }

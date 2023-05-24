@@ -251,6 +251,7 @@ MonoBehaviour:
   - {fileID: 6340774949188748140, guid: e05e3c0f2f0f6410b8b00b57a4aad1b0, type: 3}
   - {fileID: 5637299515855795747, guid: f7ffbbc4a9d45448e9c92ffd1f5fa77a, type: 3}
   - {fileID: 1929405425802594219, guid: 9870d64b1d61e477a895a5260aa41e03, type: 3}
+  - {fileID: 9091359159278849907, guid: fdf746fa4a2ed43ed838e87e9e90f147, type: 3}
   spawnLocs:
   - {fileID: 3203021796227296564}
   - {fileID: 3203021794532191159}
@@ -262,6 +263,12 @@ MonoBehaviour:
   spawnableLocs: []
   islandSpacing: 10
   mapGen: {fileID: 3203021794810115375}
+  agentClimb: 0.4
+  agentHeight: 2
+  agentRadius: 0.5
+  agentSlope: 45
+  agentTypeID: 0
+  minRegionArea: 2
 --- !u!1 &3203021794987707143
 GameObject:
   m_ObjectHideFlags: 0

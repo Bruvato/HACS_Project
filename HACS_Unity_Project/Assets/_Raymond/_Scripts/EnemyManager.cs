@@ -6,8 +6,9 @@ public class EnemyManager : MonoBehaviour
 {
     [SerializeField] private GameObject completelvlUI;
 
-    private void Update(){
 
+
+    private void Update(){
 
         if (Input.GetKeyDown(KeyCode.L)) //replace with finding when all enemeies are dead logic
         {

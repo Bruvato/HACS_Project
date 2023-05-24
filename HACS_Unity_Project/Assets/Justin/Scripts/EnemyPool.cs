@@ -6,6 +6,7 @@ using UnityEngine.Pool;
 
 public class EnemyPool : MonoBehaviour
 {
+    [SerializeField] private MapGen mG;
     public GameObject enemyPrefab;
     private ObjectPool<GameObject> enemies;
     private GameObject enemy;
@@ -33,13 +34,17 @@ public class EnemyPool : MonoBehaviour
     void Update()
     {
         spawnPoint = GetComponent<Transform>();
-        
+        if(Input.GetKey(KeyCode.M)){
+            Debug.Log("clear");
+            enemies.Clear();
+        }
         
     }
     public void Spawn(Transform spawn){
         Debug.Log(spawn.position);
         spawnPoint.position = spawn.position;
         Debug.Log(spawnPoint.position+ "sauce");
+
         enemies.Get();
         
     }

@@ -31,7 +31,7 @@ MonoBehaviour:
   recoilY: 1
   recoilZ: 0.3
   kickZ: 1
-  snappiness: 40
+  snappiness: 60
   returnAmount: 2
   aimSpeedMultiplier: 20
   aimSpeed: 0.5

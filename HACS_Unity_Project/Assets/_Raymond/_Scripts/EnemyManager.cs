@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    [SerializeField] private GameObject levelUI;
     [SerializeField] private GameObject completelvlUI;
 
     private void Update(){
@@ -18,7 +17,6 @@ public class EnemyManager : MonoBehaviour
     }
     
     private void completeLevel(){
-        levelUI.SetActive(true);
         completelvlUI.SetActive(true);
     }
 }

@@ -47,10 +47,10 @@ public class CheckLOS : MonoBehaviour
         if (dotProduct >= Mathf.Cos(fieldOfView)){
             if (Physics.Raycast(this.transform.position, direction, out RaycastHit hit, c.radius, LineOfSightLayers))
             {
-                // if(hit.gameObject.layer = )
-                Debug.Log(c.radius);
-                onGainSight?.Invoke(target);
-                return true;
+                // if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Player")){
+                    onGainSight?.Invoke(target);
+                    return true;
+                // }
             }
         }
         return false;

@@ -23,9 +23,10 @@ public class EnemyGun : MonoBehaviour
         EnemyShoot.shootAction += Shoot;
         EnemyShoot.reloadAction += StartReload;
         targets = gunData.targets;
-        muzzlePath = "Enemy Weapon Holder/"+gunData.name+"/Muzzle";
-        muzzle = GameObject.Find(muzzlePath).transform;
-        
+        // muzzlePath = "Enemy Weapon Holder/"+gunData.name+"/Muzzle";
+        // muzzle = GameObject.Find(muzzlePath).transform;
+        muzzle = gameObject.transform.GetChild(1);
+
     }
 
     private void OnDisable() => gunData.reloading = false;
@@ -50,7 +51,7 @@ public class EnemyGun : MonoBehaviour
 
     private bool CanShoot() => !gunData.reloading && timeSinceLastShot > 1f / (gunData.fireRate / 60f);
 
-    private void Shoot()
+    public void Shoot()
     {
 
         if (gunData.currentAmmo > 0)
@@ -65,7 +66,7 @@ public class EnemyGun : MonoBehaviour
 
                 recoil.recoil();
 
-                gunData.currentAmmo--;
+                // gunData.currentAmmo--;
                 timeSinceLastShot = 0;
                 OnGunShot();
 

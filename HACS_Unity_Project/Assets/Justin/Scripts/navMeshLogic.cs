@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class navMeshLogic : MonoBehaviour
 {
-    public bool shouldHide, shouldChase, isAlert;
+    public bool shouldHide, shouldChase, isAlert, stationary;
     public CheckLOS LOSChecker;
     public Enemy stats;
     [Range(0, 1)]
@@ -24,6 +24,7 @@ public class navMeshLogic : MonoBehaviour
     // Update is called once per frame
     public void UpdateStatus()
     {
+        
         if (stats.hp > hideThreshold * stats.initHp)
         {
             shouldChase = true;

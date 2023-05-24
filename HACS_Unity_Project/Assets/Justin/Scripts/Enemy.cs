@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour, IDamageable
     IEnumerator kill(){
         Debug.Log("kill");
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(0.1f);
         // Destroy(gameObject);
         pool.killEnemy(gameObject);
     }

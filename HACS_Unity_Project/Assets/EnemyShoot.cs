@@ -35,8 +35,9 @@ public class EnemyShoot : MonoBehaviour
     {
         targets = gunData.targets;
         tgt = null;
-        muzzlePath = "Enemy Weapon Holder/"+gunData.name+"/Muzzle";
-        muzzle = GameObject.Find(muzzlePath).transform;     
+        // muzzlePath = "Enemy Weapon Holder/"+gunData.name+"/Muzzle";
+        // muzzle = GameObject.Find(muzzlePath).transform;     
+        muzzle = gameObject.transform.GetChild(1);
         LOSChecker.onGainSight += HandleGainSight;
         LOSChecker.onLoseSight += HandleLoseSight;
     }
@@ -57,8 +58,9 @@ public class EnemyShoot : MonoBehaviour
 
         // shoot action and reload action are basically shoot input and reload input but for enemies
             if (Physics.Raycast(muzzle.position, muzzle.forward, out RaycastHit hitInfo, gunData.maxDistance, targets)){
-                shootAction?.Invoke();
-
+                // shootAction?.Invoke();
+            EnemyGun shoot = gameObject.GetComponent<EnemyGun>();
+            shoot.Shoot();
         }
 
         

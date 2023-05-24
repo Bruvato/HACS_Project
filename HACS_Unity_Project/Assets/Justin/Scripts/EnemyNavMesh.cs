@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemyNavMesh : MonoBehaviour
 {
     public navMeshLogic logic;
-    public bool hide, chase;
+    public bool hide, chase, stationary;
     public Transform player;
     public LayerMask hidableLayers;
     public CheckLOS LOSChecker;
@@ -20,10 +20,11 @@ public class EnemyNavMesh : MonoBehaviour
 
     private Transform movePositionTransform;
     public NavMeshAgent navMeshAgent;
+    [SerializeField] private int rotationSpeed = 5;
 
 
     private void Awake()
-    {                
+    {
         GetLogic();
 
         // GameObject target = GameObject.FindWithTag("target");
@@ -31,6 +32,17 @@ public class EnemyNavMesh : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         LOSChecker.onGainSight += HandleGainSight;
         LOSChecker.onLoseSight += HandleLoseSight;
+    }
+
+    private void Update()
+    {
+        if (player != null)
+        {
+            Vector3 direction = player.position - transform.position;
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            Quaternion rotation = transform.rotation;
+            transform.rotation = Quaternion.Slerp(rotation, targetRotation, Time.deltaTime * rotationSpeed);
+        }
     }
 
     private void HandleGainSight(Transform target)
@@ -41,12 +53,16 @@ public class EnemyNavMesh : MonoBehaviour
             StopCoroutine(MovementCoroutine);
         }
         player = target;
-
-        if(hide == true){
-        MovementCoroutine = StartCoroutine(Hide(target));
-        }
-        if(chase == true){
-        MovementCoroutine = StartCoroutine(Chase(target));
+        if (stationary == false)
+        {
+            if (hide == true)
+            {
+                MovementCoroutine = StartCoroutine(Hide(target));
+            }
+            if (chase == true)
+            {
+                MovementCoroutine = StartCoroutine(Chase(target));
+            }
         }
 
     }
@@ -59,21 +75,34 @@ public class EnemyNavMesh : MonoBehaviour
         player = null;
 
     }
-    private void GetLogic(){
-        
+    private void GetLogic()
+    {
+
         logic.UpdateStatus();
         hide = logic.shouldHide;
         chase = logic.shouldChase;
+        stationary = logic.stationary;
 
     }
-    private IEnumerator Chase(Transform target){
+    private IEnumerator Look(Transform target)
+    {
         WaitForSeconds Wait = new WaitForSeconds(0.1f);
-        while(chase == true){
-            
+        while (true)
+        {
+
+            yield return Wait;
+        }
+    }
+    private IEnumerator Chase(Transform target)
+    {
+        WaitForSeconds Wait = new WaitForSeconds(0.1f);
+        while (chase == true)
+        {
+
             GetLogic();
 
             navMeshAgent.SetDestination(target.position);
-            
+
             yield return Wait;
         }
         HandleGainSight(target);
@@ -173,11 +202,11 @@ public class EnemyNavMesh : MonoBehaviour
             return Vector3.Distance(navMeshAgent.transform.position, A.transform.position).CompareTo(Vector3.Distance(navMeshAgent.transform.position, B.transform.position));
         }
 
-        
-    }
-    
 
-    
+    }
+
+
+
 }
 
 

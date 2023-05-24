@@ -19,7 +19,7 @@ MonoBehaviour:
   targets:
     serializedVersion: 2
     m_Bits: 8
-  currentAmmo: 9244
+  currentAmmo: 199072
   magSize: 18
   fireRate: 200
   reloadTime: 1

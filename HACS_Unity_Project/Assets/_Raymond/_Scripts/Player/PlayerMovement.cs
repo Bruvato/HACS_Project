@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Refrences")]
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Transform orientation;
+    [SerializeField] private PlayerStats playerStats;
 
     [Header("Cam Effects")]
     [SerializeField] private Camera cam;
@@ -131,9 +132,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void ControlSpeed()
     {
-        if (sprintKey && !crouchKey) //spriting
+        if (sprintKey && !crouchKey && playerStats.GetStam() > 0) //spriting
         {
             setSpeed(sprintSpeed);
+            playerStats.DecreaseStam(1);
         }
         else if (crouchKey && isGrounded && !sprintKey) //crouching
         {
@@ -241,13 +243,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void GroundSlam()
     {
-        if (slamKey && !isGrounded)
+        if (slamKey && !isGrounded && playerStats.GetStam() > 30)
         {
             isSlamming = true;
         }
         if (isSlamming)
         {
             rb.AddForce(Vector3.down * groundSlamForce, ForceMode.Force);
+            playerStats.DecreaseStam(30);
 
             if (isGrounded)
             {
@@ -278,7 +281,7 @@ public class PlayerMovement : MonoBehaviour
     private void Dash()
     {
 
-        if (!crouchKey && timePressed() < 0.18f && timePressed() > 0)
+        if (!crouchKey && timePressed() < 0.18f && timePressed() > 0 && playerStats.GetStam() > 20)
         {
             if (isGrounded && !OnSlope()) //flat ground
             {
@@ -292,6 +295,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.AddForce(moveDirection.normalized * dashSpeed * movementMultiplier * airMultiplier, ForceMode.Impulse);
             }
+
+            playerStats.DecreaseStam(20);
         }
 
     }

@@ -6119,6 +6119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 200985528579385094}
   orientation: {fileID: 200985527658921938}
+  playerStats: {fileID: 1853090778}
   cam: {fileID: 200985527155194189}
   fov: 90
   dashFov: 110

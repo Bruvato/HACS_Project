@@ -83,7 +83,7 @@ public class PlayerStats : CharacterStats
         }
     }
 
-    private void DecreaseStam(int amount)
+    public void DecreaseStam(int amount)
     {
         if (stam > 0)
         {
@@ -92,6 +92,16 @@ public class PlayerStats : CharacterStats
             CheckStam();
 
         }
+    }
+
+
+    public int GetHealth()
+    {
+        return health;
+    }
+    public int GetStam()
+    {
+        return stam;
     }
 
 

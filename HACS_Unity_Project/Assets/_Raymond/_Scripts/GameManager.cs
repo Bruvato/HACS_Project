@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private MapGen mapGen;
     [SerializeField] private Transform player;
     [SerializeField] private GameObject levelUI;
+    [SerializeField] private PlayerStats playerStats;
 
     [Header("Vars")]
     [SerializeField] private static int level = 1;

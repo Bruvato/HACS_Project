@@ -18,7 +18,7 @@ public class EnemyGun : MonoBehaviour
 
     private float timeSinceLastShot;
 
-    public void Start()
+    public void Awake()
     {
         EnemyShoot.shootAction += Shoot;
         EnemyShoot.reloadAction += StartReload;

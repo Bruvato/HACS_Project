@@ -16,13 +16,14 @@ public class Gun : MonoBehaviour
 
     private float timeSinceLastShot;
 
-    public void Start()
+    public void Awake()
     {
         PlayerShoot.shootInput += Shoot;
         PlayerShoot.reloadInput += StartReload;
         targets = gunData.targets;
-        muzzlePath = "Weapon Holder/"+gunData.name+"/Muzzle";
-        muzzle = GameObject.Find(muzzlePath).transform;
+        // muzzlePath = "Weapon Holder/"+gunData.name+"/Muzzle";
+        // muzzle = GameObject.Find(muzzlePath).transform;
+        muzzle = gameObject.transform.GetChild(1);
     }
 
     private void OnDisable() => gunData.reloading = false;
@@ -49,6 +50,7 @@ public class Gun : MonoBehaviour
 
     private void Shoot()
     {
+        muzzle = gameObject.transform.GetChild(1);
 
         if (gunData.currentAmmo > 0)
         {

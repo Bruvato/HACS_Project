@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,9 +11,11 @@ public class EnemyPool : MonoBehaviour
     private GameObject enemy;
     private Transform spawnPoint;
 
+
     // Start is called before the first frame update
     void Start()
     {
+
         enemies = new ObjectPool<GameObject>(() =>
         {
             return Instantiate(enemyPrefab, spawnPoint);
@@ -41,12 +42,33 @@ public class EnemyPool : MonoBehaviour
         
     }
     public void Spawn(Transform spawn){
-        Debug.Log(spawn.position);
-        spawnPoint.position = spawn.position;
-        Debug.Log(spawnPoint.position+ "sauce");
+        // int[] favors = new int[mG.spawnableLocs.Count];
 
-        enemies.Get();
+        // for (int i = 0; i < favors.Length; i++)
+        // {
+        //     favors[i] = Random.Range(0,100);
+        // }
+        // int max = 0
         
+
+        // for (int i = 0; i < mG.GetRows(); i++)
+        // {
+        //     foreach (int i in favors)
+        //         {
+        //             if(favors[i]>max) {
+        //                 max = favors[i]
+        //             }
+        //         }
+        //     spawnPoint = mG.spawnableLocs[max].position;
+        // }
+        
+            spawnPoint = spawn;
+            enemies.Get();
+
+    
+        
+        
+
     }
 
     public void killEnemy(GameObject enemy)

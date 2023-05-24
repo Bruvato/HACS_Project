@@ -473,7 +473,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c9df565d5571419d9c899a665074cb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pool: {fileID: 3155981814909583812, guid: 083685fb0506b894dbe44b0c1db01896, type: 3}
   ptcle: {fileID: 0}
   hp: 100
   initHp: 0
@@ -511,7 +510,7 @@ MonoBehaviour:
   logic: {fileID: 1458973757}
   hide: 0
   chase: 0
-  stationary: 0
+  stationary: 1
   player: {fileID: 0}
   hidableLayers:
     serializedVersion: 2

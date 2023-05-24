@@ -17,7 +17,7 @@ public class EnemySpawn : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.K)){
 
-            enemyPool.Spawn(transform);
+            // enemyPool.Spawn(transform);
 
 
         }

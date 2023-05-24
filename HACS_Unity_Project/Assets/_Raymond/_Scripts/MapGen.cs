@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor.AI;
 
 public class MapGen : MonoBehaviour
 {
     [SerializeField] private GameObject[] islandPrefabs;
     [SerializeField] private Transform[] spawnLocs;
     [SerializeField] private int rows = 0;
+    [SerializeField] private EnemyPool pool;
 
+    public List<Transform> spawnableLocs;
 
     [SerializeField] private int islandSpacing = 10;
     [SerializeField] private GameObject mapGen;
@@ -19,7 +22,14 @@ public class MapGen : MonoBehaviour
         GenerateSpawnLocs();
 
         Generate();
+        
+        NavMeshBuilder.BuildNavMesh();
 
+        pool = GameObject.FindGameObjectWithTag("EnemyPool").GetComponent<EnemyPool>();
+        SpawnEnemies();
+    }
+    public void RemoveLocation(int index){
+        spawnableLocs.RemoveAt(index);
     }
     public void SetCount(int c)
     {
@@ -29,7 +39,9 @@ public class MapGen : MonoBehaviour
     {
         rows = r;
     }
-
+    public int GetRows(){
+        return rows;
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.G))
@@ -50,8 +62,17 @@ public class MapGen : MonoBehaviour
             Vector3 ranHeight = new Vector3(spawnLocs[i].position.x, Random.Range(-2, 2), spawnLocs[i].position.z);
             GameObject island = Instantiate(islandPrefabs[ranNum], ranHeight, islandPrefabs[ranNum].transform.rotation);
             island.transform.SetParent(spawnLocs[i]);
-
+            
+            if(ranNum>=0&&ranNum<=3){
+                spawnableLocs.Add(island.transform);
+            }
         }
+    }
+    private void SpawnEnemies()
+    {
+        int isle = Random.Range(0, spawnableLocs.Count-1);
+        pool.Spawn(spawnableLocs[isle]);
+
     }
 
     private void GenerateSpawnLocs()

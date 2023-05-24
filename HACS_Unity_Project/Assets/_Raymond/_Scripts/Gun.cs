@@ -19,7 +19,6 @@ public class Gun : MonoBehaviour
 
     public void Awake()
     {
-        DontDestroyOnLoad(gameObject);
 
         PlayerShoot.shootInput += Shoot;
         PlayerShoot.reloadInput += StartReload;

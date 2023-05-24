@@ -30,10 +30,6 @@ public class GameManager : MonoBehaviour
             RestartLevel();
         }
 
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            CompleteLevel();
-        }
     }
 
     public void RestartLevel()
@@ -43,7 +39,7 @@ public class GameManager : MonoBehaviour
         mapGen.Start();
     }
 
-    private void CompleteLevel()
+    public void CompleteLevel()
     {
         SceneManager.LoadScene("lobby");
         level++;

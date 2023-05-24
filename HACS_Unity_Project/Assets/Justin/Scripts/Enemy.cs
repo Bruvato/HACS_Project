@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour, IDamageable
     void Awake()
     {
         rb = gameObject.GetComponent<Rigidbody>();
-        pool = GameObject.FindGameObjectWithTag("EnemyPool").GetComponent<EnemyPool>();
+        // pool = GameObject.FindGameObjectWithTag("EnemyPool").GetComponent<EnemyPool>();
         rb.isKinematic = true;
         initHp = hp;
     }
@@ -36,8 +36,8 @@ public class Enemy : MonoBehaviour, IDamageable
         Debug.Log("kill");
 
         yield return new WaitForSeconds(0.1f);
-        // Destroy(gameObject);
-        pool.killEnemy(gameObject);
+        Destroy(gameObject);
+        // pool.killEnemy(gameObject);
     }
     void RagdollOn(){
         rb.isKinematic = false;

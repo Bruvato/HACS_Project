@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.AI;
+using UnityEngine.AI;
 
 public class MapGen : MonoBehaviour
 {
+
     [SerializeField] private GameObject[] islandPrefabs;
     [SerializeField] private Transform[] spawnLocs;
     [SerializeField] private int rows = 0;
@@ -15,6 +16,17 @@ public class MapGen : MonoBehaviour
     [SerializeField] private int islandSpacing = 10;
     [SerializeField] private GameObject mapGen;
     private static int count = 1;
+    NavMeshBuildSettings enemyNavSettings;
+    
+    [SerializeField] float agentClimb;
+    [SerializeField] float agentHeight;
+    [SerializeField] float agentRadius;
+    [Range(0,90)]
+    [SerializeField] float agentSlope;
+    [SerializeField] int agentTypeID;
+    [SerializeField] float minRegionArea;
+    // [SerializeField] float tileSize;
+
 
 
     public void Start()
@@ -23,10 +35,21 @@ public class MapGen : MonoBehaviour
 
         Generate();
         
-        NavMeshBuilder.BuildNavMesh();
+        BuildNavSettings();
 
         pool = GameObject.FindGameObjectWithTag("EnemyPool").GetComponent<EnemyPool>();
         SpawnEnemies();
+        
+        
+    }
+    public void BuildNavSettings(){
+
+        enemyNavSettings.agentClimb = agentClimb;
+        enemyNavSettings.agentHeight = agentHeight;
+        enemyNavSettings.agentRadius = agentRadius;
+        enemyNavSettings.agentSlope = agentSlope;
+        enemyNavSettings.agentTypeID = agentTypeID;
+        enemyNavSettings.minRegionArea = minRegionArea;
     }
     public void RemoveLocation(int index){
         spawnableLocs.RemoveAt(index);

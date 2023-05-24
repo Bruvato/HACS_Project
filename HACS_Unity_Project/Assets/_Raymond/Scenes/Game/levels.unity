@@ -492,6 +492,14 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1344874570}
+    - target: {fileID: 1594608949, guid: e6ec8531f15d74228a8cb2653b4899c9, type: 3}
+      propertyPath: gunDataList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1594608949, guid: e6ec8531f15d74228a8cb2653b4899c9, type: 3}
+      propertyPath: gunDataList.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: ad40db34b695fd4448f05c7f40dbb018, type: 2}
     - target: {fileID: 3742356357158148971, guid: e6ec8531f15d74228a8cb2653b4899c9, type: 3}
       propertyPath: m_RootOrder
       value: 4

@@ -246,11 +246,11 @@ public class PlayerMovement : MonoBehaviour
         if (slamKey && !isGrounded && playerStats.GetStam() > 30)
         {
             isSlamming = true;
+            playerStats.DecreaseStam(30);
         }
         if (isSlamming)
         {
             rb.AddForce(Vector3.down * groundSlamForce, ForceMode.Force);
-            playerStats.DecreaseStam(30);
 
             if (isGrounded)
             {

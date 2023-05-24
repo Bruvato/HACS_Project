@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         Pause();
+        CheckAlive();
 
         if (player.position.y < -20)
         {
@@ -60,6 +61,14 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             SceneManager.LoadScene(0);
+        }
+    }
+
+    private void CheckAlive()
+    {
+        if (playerStats.IsDead())
+        {
+            RestartLevel();
         }
     }
 

@@ -103,6 +103,10 @@ public class PlayerStats : CharacterStats
     {
         return stam;
     }
+    public bool IsDead()
+    {
+        return isDead;
+    }
 
 
 }

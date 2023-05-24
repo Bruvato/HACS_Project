@@ -22,7 +22,7 @@ MonoBehaviour:
     m_Bits: 8
   forceMultiplier: 0
   projectilePrefab: {fileID: 0}
-  currentAmmo: 0
+  currentAmmo: 1000
   magSize: 18
   fireRate: 200
   reloadTime: 1

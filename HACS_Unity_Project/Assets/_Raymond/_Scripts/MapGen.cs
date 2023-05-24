@@ -26,6 +26,7 @@ public class MapGen : MonoBehaviour
     [SerializeField] float agentSlope;
     [SerializeField] int agentTypeID;
     [SerializeField] float minRegionArea;
+    public bool generated;
     // [SerializeField] float tileSize;
 
 
@@ -41,7 +42,9 @@ public class MapGen : MonoBehaviour
         // pool = GameObject.FindGameObjectWithTag("EnemyPool").GetComponent<EnemyPool>();
         // SpawnEnemies();
         
-        
+        // if (count>=rows){
+        //     generated = true;
+        // }
     }
     public void BuildNavSettings(){
 

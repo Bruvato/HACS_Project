@@ -805,6 +805,10 @@ PrefabInstance:
       value: EnemyManager
       objectReference: {fileID: 0}
     - target: {fileID: 3574247045474144475, guid: b525682dad7f845aebef20113f5d053c, type: 3}
+      propertyPath: mG
+      value: 
+      objectReference: {fileID: 3203021795308857116}
+    - target: {fileID: 3574247045474144475, guid: b525682dad7f845aebef20113f5d053c, type: 3}
       propertyPath: completelvlUI
       value: 
       objectReference: {fileID: 107977689}

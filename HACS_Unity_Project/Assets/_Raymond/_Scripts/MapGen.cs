@@ -12,6 +12,7 @@ public class MapGen : MonoBehaviour
     [SerializeField] private EnemyPool pool;
 
     public List<Transform> spawnableLocs;
+    List<NavMeshBuildSource> sources;
 
     [SerializeField] private int islandSpacing = 10;
     [SerializeField] private GameObject mapGen;
@@ -35,10 +36,10 @@ public class MapGen : MonoBehaviour
 
         Generate();
         
-        BuildNavSettings();
+        // BuildNavSettings();
 
-        pool = GameObject.FindGameObjectWithTag("EnemyPool").GetComponent<EnemyPool>();
-        SpawnEnemies();
+        // pool = GameObject.FindGameObjectWithTag("EnemyPool").GetComponent<EnemyPool>();
+        // SpawnEnemies();
         
         
     }

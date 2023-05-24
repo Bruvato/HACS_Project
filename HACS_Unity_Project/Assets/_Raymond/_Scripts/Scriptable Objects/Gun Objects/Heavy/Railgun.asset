@@ -10,31 +10,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8bb865cf307b1408bb3f265c4a17ba8f, type: 3}
-  m_Name: Enemy Cool Pistol
+  m_Name: Railgun
   m_EditorClassIdentifier: 
-  name: Enemy Pistol
+  name: Railgun
   onEnemy: 0
-  isProjectile: 0
-  damage: 16
-  maxDistance: 100
+  isProjectile: 1
+  damage: 50
+  maxDistance: 200
   targets:
     serializedVersion: 2
-    m_Bits: 8
-  forceMultiplier: 0
-  projectilePrefab: {fileID: 0}
-  currentAmmo: 0
-  magSize: 18
-  fireRate: 200
-  reloadTime: 1
+    m_Bits: 192
+  forceMultiplier: 200
+  projectilePrefab: {fileID: 6104488769976911482, guid: efda8daea23ff22428b98dba7c677333, type: 3}
+  currentAmmo: 2
+  magSize: 5
+  fireRate: 75
+  reloadTime: 3
   reloading: 0
   recoilX: -0.5
-  recoilY: 0.3
+  recoilY: 1
   recoilZ: 0.3
-  kickZ: 0.3
+  kickZ: 1
   snappiness: 40
-  returnAmount: 8
+  returnAmount: 2
   aimSpeedMultiplier: 20
   aimSpeed: 0.5
   playerPrefab: {fileID: 6159813370117294016, guid: e6ec8531f15d74228a8cb2653b4899c9, type: 3}
-  aimfov: 60
-  weaponPrefab: {fileID: 3214544398459233453, guid: 9026c7acd2f2342f68c77c40b7abfb38, type: 3}
+  aimfov: 0
+  weaponPrefab: {fileID: 4132753749079233502, guid: 0a9b050c79c4c4e3bad849b020892608, type: 3}

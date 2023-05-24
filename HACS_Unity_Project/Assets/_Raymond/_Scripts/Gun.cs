@@ -10,15 +10,23 @@ public class Gun : MonoBehaviour
     [SerializeField] private GunData gunData;
     [SerializeField] private Camera cam;
     [SerializeField] private WeaponRecoil recoil;
+    private GameObject projectilePrefab;
+    private float forceMultiplier;
     private Transform muzzle;
     private string muzzlePath;
     private LayerMask targets;
+
 
     private float timeSinceLastShot;
 
 
     public void Awake()
     {
+
+        if(gunData.isProjectile == true){
+        forceMultiplier = gunData.forceMultiplier;
+        projectilePrefab = gunData.projectilePrefab;
+        }
 
         PlayerShoot.shootInput += Shoot;
         PlayerShoot.reloadInput += StartReload;
@@ -65,8 +73,9 @@ public class Gun : MonoBehaviour
             if (CanShoot())
 
             {
+                if(gunData.isProjectile != true){
                 if (Physics.Raycast(/*cam.transform.position, cam.transform.forward,*/muzzle.position, muzzle.forward, out RaycastHit hitInfo, gunData.maxDistance, targets))
-                {
+                    {
 
                     Debug.Log(hitInfo.transform.name);
 
@@ -74,13 +83,19 @@ public class Gun : MonoBehaviour
                     IDamageable damageable = hitInfo.transform.GetComponent<IDamageable>();
                     damageable?.TakeDamage(gunData.damage);
 
+                    }
                 }
+                 else {
+                    GameObject bullet = Instantiate(projectilePrefab, muzzle.position, muzzle.rotation);
+                    bullet.GetComponent<Rigidbody>().AddForce(muzzle.forward*forceMultiplier, ForceMode.Impulse);
+                 }
+                
                 recoil.recoil();
 
                 gunData.currentAmmo--;
                 timeSinceLastShot = 0;
                 OnGunShot();
-
+                
             }
         }
     }

@@ -8,11 +8,14 @@ public class GunData : ScriptableObject
     [Header("Info")]
     public new string name;
     public bool onEnemy;
+    public bool isProjectile;
 
     [Header("Shooting")]
     public float damage;
     public float maxDistance;
     public LayerMask targets;
+    public float forceMultiplier;
+    public GameObject projectilePrefab;
 
     [Header("Reloading")]
     public int currentAmmo;

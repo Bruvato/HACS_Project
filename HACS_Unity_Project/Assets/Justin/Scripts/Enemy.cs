@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamageable
 {
+    [SerializeField] ParticleSystem ptcle;
     public float hp = 100f, initHp;
     private Rigidbody rb;
     private EnemyPool pool;
+    
     // Start is called before the first frame update
     void Awake()
     {
@@ -36,6 +38,8 @@ public class Enemy : MonoBehaviour, IDamageable
         Debug.Log("kill");
 
         yield return new WaitForSeconds(0.1f);
+        
+        Instantiate(ptcle, gameObject.transform);
         Destroy(gameObject);
         // pool.killEnemy(gameObject);
     }

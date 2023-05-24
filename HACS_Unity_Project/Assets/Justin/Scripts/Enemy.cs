@@ -36,10 +36,10 @@ public class Enemy : MonoBehaviour, IDamageable
     }
     IEnumerator kill(){
         Debug.Log("kill");
+        ParticleSystem explosion = Instantiate(ptcle, gameObject.transform.position, gameObject.transform.rotation);
 
         yield return new WaitForSeconds(0.1f);
-        
-        // Instantiate(ptcle, gameObject.transform);
+        Destroy(explosion);
         Destroy(gameObject);
         // pool.killEnemy(gameObject);
     }

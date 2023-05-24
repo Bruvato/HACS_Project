@@ -473,7 +473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c9df565d5571419d9c899a665074cb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ptcle: {fileID: 0}
+  ptcle: {fileID: 4721622447861113887, guid: a65713219c74645ad80d58524920082d, type: 3}
   hp: 100
   initHp: 0
 --- !u!114 &1458973757

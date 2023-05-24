@@ -26,7 +26,7 @@ public class PlayerStats : CharacterStats
         checkHealth();
         CheckStam();
     }
-
+    
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.O))

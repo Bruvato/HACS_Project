@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     [SerializeField] private GameObject completelvlUI;
+    [SerializeField] private PlayerStats playerStats;
 
             
     
@@ -12,7 +13,7 @@ public class EnemyManager : MonoBehaviour
         
         GameObject e = GameObject.FindGameObjectWithTag("Enemy");
         
-        if (e==null) //replace with finding when all enemeies are dead logic
+        if (e==null&& playerStats.IsDead() == false) //replace with finding when all enemeies are dead logic
         {
             completeLevel();
             

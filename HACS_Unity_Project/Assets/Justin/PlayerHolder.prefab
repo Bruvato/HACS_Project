@@ -732,6 +732,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1485138735}
   - component: {fileID: 1180355693}
+  - component: {fileID: 1309668425}
   m_Layer: 3
   m_Name: Hitbox
   m_TagString: Untagged
@@ -767,6 +768,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1309668425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485138734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ef3d3fb2b2364072a4a5cf83a02781f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerstats: {fileID: 1853090778}
 --- !u!1 &1767663327
 GameObject:
   m_ObjectHideFlags: 0
@@ -6502,6 +6516,7 @@ MonoBehaviour:
   gunDataList:
   - {fileID: 11400000, guid: 1ddb809dbf51e472890d0a948f833d68, type: 2}
   - {fileID: 11400000, guid: c8fb8a95a64bc4392b6c25502c34ad17, type: 2}
+  - {fileID: 11400000, guid: ad40db34b695fd4448f05c7f40dbb018, type: 2}
   ammoText: {fileID: 4533909056248220972}
   weaponName: {fileID: 2022647913262894778}
   reloadCricle: {fileID: 6512118466508046895}
